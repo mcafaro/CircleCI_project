@@ -10,7 +10,8 @@ jobs:
       
     steps:
       - checkout
-      - matlab/install
+      - matlab/install:
+          release: R2022b
       - matlab/run-command:
           command: pwd
           
