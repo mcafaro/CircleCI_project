@@ -6,7 +6,7 @@ jobs:
      
   build_script:
     machine:
-      image: default
+      image: ubuntu-2004:current
       
     steps:
       - checkout
