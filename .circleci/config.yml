@@ -13,8 +13,7 @@ jobs:
       - matlab/install:
           release: R2022b
       - matlab/run-command:
-          command: pwd
-          
+          command: myscript
           
           
 workflows:
