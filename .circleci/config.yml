@@ -5,12 +5,12 @@ orbs:
 jobs:
   build_run:
     machine:
-      image: ubuntu-2204:2022.07.1
+      image: ubuntu-2004:current
       
     steps:
       - checkout
       - matlab/install
-      - matlab/run-build:  
+      - matlab/run-build
 
   build_script:
     machine:
