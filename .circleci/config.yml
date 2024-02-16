@@ -6,7 +6,7 @@ jobs:
      
   build_script:
     machine:
-      image: ubuntu-2204:2022.07.1
+      image: default
       
     steps:
       - checkout
