@@ -1,6 +1,6 @@
 version: '2.1'
 orbs:
-  matlab: mathworks/matlab@1.0.0
+  matlab: mathworks/matlab@1
   
 jobs:
      
@@ -12,7 +12,7 @@ jobs:
       - checkout
       - matlab/install
       - matlab/run-command:
-          command: myscript
+          command: pwd
           
           
           
