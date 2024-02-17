@@ -22,6 +22,15 @@ jobs:
           release: R2022b
       - matlab/run-command:
           command: myscript
+
+  build_test:
+    machine:
+      image: ubuntu-2004:current 
+    steps:
+      - checkout
+      - matlab/install
+      - matlab/run-tests
+          
           
           
 workflows:
@@ -29,4 +38,5 @@ workflows:
     jobs:
       - build_run
       - build_script
+      - build_test
       
