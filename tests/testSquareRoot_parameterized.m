@@ -7,7 +7,17 @@ classdef testSquareRoot_parameterized < matlab.unittest.TestCase
     
     methods (TestClassSetup)
         function addTestContentToPath(testCase)
-            addpath(fullfile(getenv('WORKSPACE'),'source'));
+        if ispc
+            userHome = getenv('USERPROFILE');
+        elseif isunix
+            userHome = getenv('HOME');
+        else
+            error('Platform not supported');
+        end
+        sourceDir = fullfile(userHome, 'CircleCI_project', 'source');
+        
+        % Add the 'source' directory to the MATLAB search path
+        addpath(sourceDir);
         end
     end       
     
