@@ -3,7 +3,15 @@ orbs:
   matlab: mathworks/matlab@1
   
 jobs:
-     
+  build_run:
+    machine:
+      image: ubuntu-2004:current
+      
+    steps:
+      - checkout
+      - matlab/install
+      - matlab/run-build
+
   build_script:
     machine:
       image: ubuntu-2004:current
@@ -19,4 +27,6 @@ jobs:
 workflows:
   build:
     jobs:
+      - build_run
       - build_script
+      

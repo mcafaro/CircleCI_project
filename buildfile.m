@@ -1,26 +1,38 @@
 function plan = buildfile
-import matlab.buildtool.tasks.CodeIssuesTask
-import matlab.buildtool.tasks.TestTask
-
-% Create a plan from task functions
+% Copyright 2023 The MathWorks, Inc.
+ 
+import matlab.buildtool.tasks.*
+import matlab.buildtool.Task;
+ 
 plan = buildplan(localfunctions);
 
-% Add the "check" task to identify code issues
-plan("check") = CodeIssuesTask;
+plan("check") = Task;
+plan("check").Actions = @checkTask;
+plan("check").Description = "Checks Description";
+plan("test") = Task;
+plan("test").Actions = @testTask;
+plan("test").Description = "tests Dscription";
+plan("test").Dependencies = ["check","show"];
+plan("show") = Task;
+plan("show").Actions = @showTask;
 
-% Add the "test" task to run tests
-plan("test") = TestTask;
+%plan("dsplay")
 
-% Make the "archive" task the default task in the plan
-plan.DefaultTasks = "archive";
+plan("clean") = CleanTask();
+plan.DefaultTasks = ["test"];
 
-% Make the "archive" task dependent on the "check" and "test" tasks
-plan("archive").Dependencies = ["check" "test"];
+function checkTask(~)
+ % Identify code issues
+disp("Hello Check");
+end
+function showTask(~)
+ % Identify code issues
+disp("Hello Show");
 end
 
-function archiveTask(~)
-% Create ZIP file
-filename = "source_" + ...
-    string(datetime("now",Format="yyyyMMdd'T'HHmmss"));
-zip(filename,"*")
+function testTask(~)
+ % Identify code issues
+disp("Hello test");
+end
+     
 end
