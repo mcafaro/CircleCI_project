@@ -7,7 +7,7 @@ classdef testSquareRoot_parameterized < matlab.unittest.TestCase
     
     methods (TestClassSetup)
         function addTestContentToPath(testCase)
-            addpath(fullfile(pwd,'source'));        
+            addpath(fullfile(fileparts(pwd),'source'));       
         end
     end       
     
