@@ -2,17 +2,7 @@ classdef testSquareRoot_basic < matlab.unittest.TestCase
    
     methods (TestClassSetup)
         function addTestContentToPath(testCase)
-        if ispc
-            userHome = getenv('USERPROFILE');
-        elseif isunix
-            userHome = getenv('HOME');
-        else
-            error('Platform not supported');
-        end
-        sourceDir = fullfile(userHome, 'CircleCI_project', 'source');
-        
-        % Add the 'source' directory to the MATLAB search path
-        addpath(sourceDir);
+            addpath(fullfile(pwd,'source'));
         end
     end       
     
