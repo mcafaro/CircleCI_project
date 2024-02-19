@@ -1,25 +1,12 @@
-version: '2.1'
-orbs:
-  matlab: mathworks/matlab@1
-  
-jobs:
-  build_test:
-    machine:
-      image: ubuntu-2004:current 
-    parallelism: 2  
-    steps:
-      - checkout
-      - matlab/install
-      - run:
-          name: Run MATLAB tests with Test Splitting
-          command: |
-            TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)
-            matlab -batch "addpath('tests'); testResults = runtests({$TESTFILES}, 'IncludeSubfolders', true);"
-          
-          
-          
+version: 2.1
+
 workflows:
-  build:
+  build-workflow:
     jobs:
-      - build_test
-      
+      - runner
+jobs:
+  runner:
+    machine: true
+    resource_class: vandit/pool
+    steps:
+      - run: echo "Hi I'm on Runners!"
