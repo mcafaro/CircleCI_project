@@ -13,8 +13,8 @@ jobs:
       - run:
           name: Run MATLAB tests with Test Splitting
           command: |
-              matlab-batch pwd
-          
+              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)
+              echo "Test files to run: $TESTFILES"
           
           
 workflows:
