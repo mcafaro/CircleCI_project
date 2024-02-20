@@ -16,9 +16,14 @@ jobs:
       - run:
           name: Run MATLAB tests with Test Splitting
           command: |
-              echo $MATHWORKS_TOKEN 
+              if [ -z "${MATHWORKS_TOKEN}" ]; then
+                echo "MATHWORKS_TOKEN is not set."
+                exit 1
+              else
+                echo "MATHWORKS_TOKEN is set."
+              fi
               
-              matlab-batch pwd
+              matlab -batch "pwd"
           
           
 workflows:
