@@ -1,12 +1,23 @@
-version: 2.1
-
-workflows:
-  build-workflow:
-    jobs:
-      - runner
+version: '2.1'
+orbs:
+  matlab: mathworks/matlab@1
+  
 jobs:
-  runner:
-    machine: true
-    resource_class: vandit/pool
+  build_test:
+    machine:
+      image: ubuntu-2004:current  
     steps:
-      - run: echo "Hi I'm on Runners!"
+      - checkout
+      - matlab/install
+      - run:
+          name: Run MATLAB tests with Test Splitting
+          command: |
+           matlab -batch pwd 
+          
+          
+          
+workflows:
+  build:
+    jobs:
+      - build_test
+      
