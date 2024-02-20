@@ -9,13 +9,18 @@ jobs:
     parallelism: 2 
     steps:
       - checkout
+
       - matlab/install
+
       - run:
           name: Run MATLAB tests with Test Splitting
           command: |
-              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)
+              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings)
               FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
               matlab -batch "addpath('tests'); testResults = runtests({$FORMATTED_TESTFILES}, 'IncludeSubfolders', true);"
+
+      - store_test_results:
+          path: testResults        
           
           
           
