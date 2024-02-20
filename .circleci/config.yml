@@ -13,8 +13,9 @@ jobs:
       - run:
           name: Run MATLAB tests with Test Splitting
           command: |
-            TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)
-            matlab -batch "addpath('tests'); testResults = runtests({${TESTFILES// /' '}}, 'IncludeSubfolders', true);" 
+              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)
+              FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
+              matlab -batch "addpath('tests'); testResults = runtests({$FORMATTED_TESTFILES}, 'IncludeSubfolders', true);"
           
           
           
