@@ -15,6 +15,7 @@ jobs:
           command: |
               TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)
               echo "Test files to run: $TESTFILES"
+              matlab -batch "addpath('tests'); testResults = runtests({'${TESTFILES// /' '}}', 'IncludeSubfolders', true);"
           
           
           
