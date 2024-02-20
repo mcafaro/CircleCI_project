@@ -23,7 +23,7 @@ jobs:
                 echo "MATHWORKS_TOKEN is set."
               fi
               
-              matlab -batch "pwd"
+              matlab-batch pwd
           
           
 workflows:
