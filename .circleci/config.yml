@@ -6,6 +6,10 @@ jobs:
   build_test:
     machine:
       image: ubuntu-2004:current  
+    environment:
+      MATHWORKS_TOKEN: $MATHWORKS_TOKEN
+      MATHWORKS_ACCOUNT: $MATHWORKS_ACCOUNT
+
     steps:
       - checkout
       - matlab/install
