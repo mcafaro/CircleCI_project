@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run MATLAB tests with Test Splitting
           command: |
-              echo "MATHWORKS_TOKEN is $MATHWORKS_ACCOUNT"
+              echo "MATHWORKS_TOKEN is $MATHWORKS_TOKEN"
               echo "$PATH"
               matlab-batch pwd
           
