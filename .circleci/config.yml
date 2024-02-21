@@ -15,11 +15,11 @@ jobs:
       - run:
           name: Run MATLAB tests with Test Splitting
           command: |
-                  mkdir -p testResults
-                  TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings)
-                  echo "$TESTFILES"
-                  FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
-                  matlab -batch "addpath('tests'); import matlab.unittest.TestSuite; import matlab.unittest.TestRunner; import matlab.unittest.plugins.XMLPlugin; suite = TestSuite.fromFile({$FORMATTED_TESTFILES}, 'IncludingSubfolders', true); runner = TestRunner.withTextOutput; xmlFile = fullfile('testResults', 'results.xml'); runner.addPlugin(XMLPlugin.producingJUnitFormat(xmlFile)); results = runner.run(suite);"
+                          mkdir -p testResults
+                          TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings)
+                          echo "$TESTFILES"
+                          FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
+                          matlab -batch "addpath('tests'); import matlab.unittest.TestSuite; import matlab.unittest.TestRunner; import matlab.unittest.plugins.XMLPlugin; suite = TestSuite.fromFile({$FORMATTED_TESTFILES}, 'IncludeSubfolders', true); runner = TestRunner.withTextOutput; xmlFile = fullfile('testResults', 'results.xml'); runner.addPlugin(XMLPlugin.producingJUnitFormat(xmlFile)); results = runner.run(suite);"
 
       - store_test_results:
           path: testResults/results.xml      
