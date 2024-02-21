@@ -22,7 +22,7 @@ jobs:
                           matlab -batch "addpath('tests'); runTestsAndGenerateReports" 
 
       - store_test_results:
-          path: testResults/results.xml      
+          path: testResults     
           
           
           
