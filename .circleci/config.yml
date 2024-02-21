@@ -19,7 +19,7 @@ jobs:
                           TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings)
                           echo "$TESTFILES"
                           FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
-                          matlab -batch "addpath('tests'); import matlab.unittest.TestSuite; import matlab.unittest.TestRunner; import matlab.unittest.plugins.XMLPlugin; suite = TestSuite.fromFile({$FORMATTED_TESTFILES}, 'IncludeSubfolders', true); runner = TestRunner.withTextOutput; xmlFile = fullfile('testResults', 'results.xml'); runner.addPlugin(XMLPlugin.producingJUnitFormat(xmlFile)); results = runner.run(suite);"
+                          matlab -batch "addpath('tests'); runTestsAndGenerateReports" 
 
       - store_test_results:
           path: testResults/results.xml      
