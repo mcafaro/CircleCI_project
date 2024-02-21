@@ -1,5 +1,5 @@
 % runTestsAndGenerateReports.m
-function runTestsAndGenerateReports
+function runTestsAndGenerateReports(testFiles)
     import matlab.unittest.TestSuite;
     import matlab.unittest.TestRunner;
     import matlab.unittest.plugins.XMLPlugin;
@@ -10,8 +10,8 @@ function runTestsAndGenerateReports
         mkdir(resultsDir);
     end
     
-    % Create a test suite for all test classes in the 'tests' folder
-    suite = TestSuite.fromFolder('tests', 'IncludeSubfolders', true);
+    % Create a test suite for the specified test files
+    suite = TestSuite.fromFile(testFiles, 'IncludeSubfolders', true);
     
     % Run each test class and generate a JUnit XML report
     for i = 1:numel(suite)
