@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" name="testCubeRoot_basic" skipped="0" tests="1" time="0.12953">
+    <testcase classname="testCubeRoot_basic" name="testPositiveValues" time="0.12953"/>
+  </testsuite>
+</testsuites>

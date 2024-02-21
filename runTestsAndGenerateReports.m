@@ -10,8 +10,27 @@ function runTestsAndGenerateReports(testFiles)
         mkdir(resultsDir);
     end
     
-    % Create a test suite for the specified test files
-    suite = TestSuite.fromFile(testFiles, 'IncludeSubfolders', true);
+    % Check if testFiles is a cell array of character vectors
+    if ~iscellstr(testFiles) && ~iscell(testFiles)
+        error('testFiles must be a cell array of character vectors.');
+    end
+    
+    % Create a test suite for each specified test file
+    suite = [];
+    for i = 1:numel(testFiles)
+        % Ensure each element of testFiles is a character vector
+        if ischar(testFiles{i})
+            % Append the TestSuite for the current test file
+            suite = [suite, TestSuite.fromFile(testFiles{i})];
+        else
+            error('Each element of testFiles must be a character vector.');
+        end
+    end
+    
+    % Check if the suite is empty
+    if isempty(suite)
+        error('No valid test files were provided.');
+    end
     
     % Run each test class and generate a JUnit XML report
     for i = 1:numel(suite)
