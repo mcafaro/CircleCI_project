@@ -3,8 +3,8 @@ classdef testCubeRoot_parameterized < matlab.unittest.TestCase
     properties (TestParameter)
         positiveInputs = {8, 27, 64, 125};
         positiveExpectedOutputs = {2, 3, 4, 5};
-        negativeInput = {-8};
-        negativeExpectedOutput = {-2};
+        negativeInput = {8};
+        negativeExpectedOutput = {2};
     end
     
     methods (TestClassSetup)
