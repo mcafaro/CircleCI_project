@@ -15,6 +15,7 @@ jobs:
       - run:
           name: Run MATLAB tests with Test Splitting
           command: |
+                  mkdir -p testResults
                   TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings)
                   echo "$TESTFILES"
                   FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
