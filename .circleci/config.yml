@@ -1,33 +1,19 @@
-version: '2.1' 
+version: '2.1'
 orbs:
-  matlab: mathworks/matlab@0
-  
+  matlab: mathworks/matlab@1
 jobs:
-  build_test:
+  build:
     machine:
-      image: ubuntu-2004:current 
-    parallelism: 2 
+      image: ubuntu-2204:2022.07.1
     steps:
       - checkout
-
-      - matlab/install
-
-      - run:
-          name: Run MATLAB tests with Test Splitting
-          command: |
-                          mkdir -p testResults
-                          TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings)
-                          echo "$TESTFILES"
-                          FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
-                          matlab -batch "addpath('tests'); runTestsAndGenerateReports({$FORMATTED_TESTFILES});" 
-
+      - matlab/install:
+          products: Simulink Simulink_Test
+      - matlab/run-tests:
+          test-results-junit: test-results/matlab/results.xml
       - store_test_results:
-          path: tests/testResults     
-          
-          
-          
+          path: test-results
 workflows:
-  build:
+  run_test_with_report:
     jobs:
-      - build_test
-      
+      - build
