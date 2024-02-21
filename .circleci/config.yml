@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2.1' 
 orbs:
   matlab: mathworks/matlab@0
   
@@ -22,7 +22,7 @@ jobs:
                           matlab -batch "addpath('tests'); runTestsAndGenerateReports({$FORMATTED_TESTFILES})" 
 
       - store_test_results:
-          path: testResults/results.xml      
+          path: testResults     
           
           
           
