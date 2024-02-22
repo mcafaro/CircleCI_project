@@ -12,11 +12,11 @@ jobs:
       - run: 
           name: Run MATLAB test with test splitting
           command: |
-              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)  
-              echo "$TESTFILES"
-              FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
-              echo "$FORMATTED_TESTFILES"
-              matlab-batch "addpath('tests'); runTestsAndGenerateReports({$FORMATTED_TESTFILES})" 
+            TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)  
+            echo "$TESTFILES"
+            FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
+            echo "{$FORMATTED_TESTFILES}"
+            matlab-batch "addpath('tests'); runTestsAndGenerateReports({$FORMATTED_TESTFILES})" 
           
       - store_test_results:
           path: test-results
