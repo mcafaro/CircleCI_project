@@ -1,11 +1,7 @@
 version: '2.1'
 orbs:
-<<<<<<< HEAD
-  matlab: mathworks/matlab@
-=======
   matlab: mathworks/matlab@1
 
->>>>>>> f479d9a312a6c615a83495c3d03c86b5b91ff23a
 jobs:
   build:
     machine:
@@ -21,11 +17,11 @@ jobs:
               TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)  
               echo "$TESTFILES"
               FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
-              matlab-batch "addpath('tests'); runTestsAndGenerateReports" 
+              matlab-batch "addpath('tests'); runTestsAndGenerateReports($FORMATTED_TESTFILES)" 
           
       - store_test_results:
           path: test-results
 workflows:
-  add_env:
+  runTests_with_param
     jobs:
       - build
