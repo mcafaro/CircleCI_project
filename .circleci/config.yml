@@ -17,8 +17,10 @@ jobs:
       - run: 
           name: Run MATLAB test with test splitting
           command: |
-            
-              matlab-batch pwd
+              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)  
+              echo "$TESTFILES"
+              FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
+              matlab-batch "addpath('tests'); runTestsAndGenerateReports" 
           
       - store_test_results:
           path: test-results
