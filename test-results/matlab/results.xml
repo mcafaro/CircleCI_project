@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" name="testCubeRoot_basic" skipped="0" tests="3" time="0.11746">
+    <testcase classname="testCubeRoot_basic" name="testPositiveValues" time="0.10792"/>
+    <testcase classname="testCubeRoot_basic" name="testNegativeValues" time="0.0067638"/>
+    <testcase classname="testCubeRoot_basic" name="testZeroValue" time="0.0027762"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="testCubeRoot_parameterized" skipped="0" tests="6" time="0.13358">
+    <testcase classname="testCubeRoot_parameterized" name="testPositive(positiveInputs=8,positiveExpectedOutputs=2)" time="0.11858"/>
+    <testcase classname="testCubeRoot_parameterized" name="testPositive(positiveInputs=27,positiveExpectedOutputs=3)" time="0.0015967"/>
+    <testcase classname="testCubeRoot_parameterized" name="testPositive(positiveInputs=64,positiveExpectedOutputs=4)" time="0.0014171"/>
+    <testcase classname="testCubeRoot_parameterized" name="testPositive(positiveInputs=125,positiveExpectedOutputs=5)" time="0.0023925"/>
+    <testcase classname="testCubeRoot_parameterized" name="testNegative(negativeInput=8,negativeExpectedOutput=2)" time="0.0026075"/>
+    <testcase classname="testCubeRoot_parameterized" name="testError" time="0.0069916"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="testNthRoot_basic" skipped="0" tests="4" time="0.14078">
+    <testcase classname="testNthRoot_basic" name="testPositiveValues" time="0.13142"/>
+    <testcase classname="testNthRoot_basic" name="testNegativeValuesForOddN" time="0.0018033"/>
+    <testcase classname="testNthRoot_basic" name="testNegativeValuesForEvenN" time="0.0054888"/>
+    <testcase classname="testNthRoot_basic" name="testZeroValue" time="0.0020659"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="testNthRoot_parameterized" skipped="0" tests="6" time="0.14344">
+    <testcase classname="testNthRoot_parameterized" name="testPositive(positiveInputs=16,positiveN=4,positiveExpectedOutputs=2)" time="0.12827"/>
+    <testcase classname="testNthRoot_parameterized" name="testPositive(positiveInputs=32,positiveN=5,positiveExpectedOutputs=2_1)" time="0.0014772"/>
+    <testcase classname="testNthRoot_parameterized" name="testPositive(positiveInputs=243,positiveN=5_1,positiveExpectedOutputs=3)" time="0.0017254"/>
+    <testcase classname="testNthRoot_parameterized" name="testPositive(positiveInputs=1024,positiveN=10,positiveExpectedOutputs=2_2)" time="0.0015606"/>
+    <testcase classname="testNthRoot_parameterized" name="testNegative(negativeInput=-64,negativeN=3,negativeExpectedOutput=-4)" time="0.0032463"/>
+    <testcase classname="testNthRoot_parameterized" name="testError" time="0.0071602"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="testSquareRoot_basic" skipped="0" tests="1" time="0.13057">
+    <testcase classname="testSquareRoot_basic" name="testValues" time="0.13057"/>
+  </testsuite>
+  <testsuite errors="0" failures="0" name="testSquareRoot_parameterized" skipped="0" tests="6" time="0.14082">
+    <testcase classname="testSquareRoot_parameterized" name="test(inputs=4,expected_outputs=2)" time="0.12946"/>
+    <testcase classname="testSquareRoot_parameterized" name="test(inputs=16,expected_outputs=4)" time="0.001459"/>
+    <testcase classname="testSquareRoot_parameterized" name="test(inputs=81,expected_outputs=9)" time="0.0011624"/>
+    <testcase classname="testSquareRoot_parameterized" name="test(inputs=121,expected_outputs=11)" time="0.0011057"/>
+    <testcase classname="testSquareRoot_parameterized" name="test(inputs=49,expected_outputs=7)" time="0.0016452"/>
+    <testcase classname="testSquareRoot_parameterized" name="testError" time="0.0059938"/>
+  </testsuite>
+</testsuites>

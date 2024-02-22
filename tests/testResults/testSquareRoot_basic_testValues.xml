@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<testsuites>
-  <testsuite errors="0" failures="0" name="testSquareRoot_basic" skipped="0" tests="1" time="0.10362">
-    <testcase classname="testSquareRoot_basic" name="testValues" time="0.10362"/>
-  </testsuite>
-</testsuites>
