@@ -1,13 +1,11 @@
 version: '2.1'
 orbs:
   matlab: mathworks/matlab@1
-
 jobs:
   build:
     machine:
       image: ubuntu-2004:current
-    parallelism: 2 
-
+    parallelism: 2  
     steps:
       - checkout
       - matlab/install
@@ -17,11 +15,11 @@ jobs:
               TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split)  
               echo "$TESTFILES"
               FORMATTED_TESTFILES="'$(echo $TESTFILES | sed "s/ /', '/g")'"
-              matlab-batch "addpath('tests'); runTestsAndGenerateReports($FORMATTED_TESTFILES)" 
+              matlab -batch "addpath('tests'); runTestsAndGenerateReports($FORMATTED_TESTFILES)" 
           
       - store_test_results:
           path: test-results
 workflows:
-  runTests_with_param
+  running_matlab_batch_with_param:
     jobs:
       - build
