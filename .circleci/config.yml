@@ -1,11 +1,16 @@
 version: '2.1'
 orbs:
-  matlab: mathworks/matlab@0
+  matlab: mathworks/matlab@1
+
 jobs:
   build:
     machine:
       image: ubuntu-2004:current
-    parallelism: 2  
+    parallelism: 2 
+
+    environment:
+      MLM_LICENSE_TOKEN: vandita@mathworks.com|sample_token|AAARVVEZvhqxL9+Ll4ful+YZMoOuIU0eJqwF8jMo3y5CIqQkteNecayfQ7RsmheqJb+z/on9UfS/oHO94vJ/+S0nPQ4mgzA481iDJacYrvcfdT5vjAqMFTZJyxYLsfROl2+iNx7r/M0floCviegWrjYL8p4qFRav2diUjvRo7w9HWdRJzDt6ZwA
+
     steps:
       - checkout
       - matlab/install
@@ -20,6 +25,6 @@ jobs:
       - store_test_results:
           path: test-results
 workflows:
-  running_matlab_batch_parallel:
+  add_env:
     jobs:
       - build
