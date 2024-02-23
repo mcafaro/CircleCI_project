@@ -12,7 +12,7 @@ jobs:
       - run: 
           name: Run MATLAB test with test splitting
           command: |
-              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings --timings-type=filename | sed 's|tests/||')
+              TESTFILES=$(circleci tests glob "tests/*.m" | circleci tests split --split-by=timings --timings-type=testname | sed 's|tests/||')
               echo "$TESTFILES"
               FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
               echo "{$FORMATTED_TESTFILES}"
