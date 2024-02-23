@@ -17,6 +17,12 @@ jobs:
               FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
               echo "{$FORMATTED_TESTFILES}"
               matlab-batch "addpath('tests'); runTestsAndGenerateReports({$FORMATTED_TESTFILES})" 
+      - run:
+          name: List test results for debugging
+          command: ls -al test-results
+
+      - store_test_results:
+          path: test-results        
           
       - store_test_results:
           path: test-results
