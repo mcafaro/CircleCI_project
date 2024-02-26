@@ -13,8 +13,9 @@ jobs:
           name: Run MATLAB test with test splitting
           command: |
               cd tests/
-              TESTFILES=$(circleci tests glob "**")
+              TESTFILES=$(circleci tests glob "**"| circleci tests split)
               echo "$TESTFILES"      
+
           
 workflows:
   trial1:
