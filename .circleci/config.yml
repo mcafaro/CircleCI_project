@@ -12,21 +12,10 @@ jobs:
       - run: 
           name: Run MATLAB test with test splitting
           command: |
-              TESTFILES=$(circleci tests glob "tests/**" | circleci tests split --split-by=timings --timings-type=testname | sed 's|tests/||')
-              echo "$TESTFILES"
-              FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
-              echo "{$FORMATTED_TESTFILES}"
-              matlab-batch "addpath('tests'); runTestsAndGenerateReports({$FORMATTED_TESTFILES})" 
-      - run:
-          name: List test results for debugging
-          command: ls -al test-results
-
-      - store_test_results:
-          path: test-results        
+              TESTFILES=$(circleci tests glob "tests/**")
+              echo "$TESTFILES"      
           
-      - store_test_results:
-          path: test-results
 workflows:
-  running_matlab_batch_with_param:
+  trial1:
     jobs:
       - build
