@@ -17,6 +17,7 @@ jobs:
               echo "$TESTFILES"      
               FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
               echo "{$FORMATTED_TESTFILES}"
+              cd ..
               matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
 
       - store_test_results:
