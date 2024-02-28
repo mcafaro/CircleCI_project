@@ -14,7 +14,7 @@ jobs:
           command: |
               cd tests/
               TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests run --split-by=timings)
+              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests run --split-by=timings --timings-type= classname)
               echo "$SPLIT_TESTFILES"
               FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
               echo "{$FORMATTED_TESTFILES}"
