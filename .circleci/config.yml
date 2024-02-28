@@ -27,6 +27,6 @@ jobs:
 
           
 workflows:
-  timing-type_classname:
+  timing_type_classname:
     jobs:
       - build
