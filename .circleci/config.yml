@@ -4,21 +4,24 @@ orbs:
 jobs:
   build:
     machine:
-      image: ubuntu-2004:current 
+      image: ubuntu-2004:current
+    parallelism: 2  
     steps:
       - checkout
       - matlab/install
-      - matlab/run-tests:
-          test-results-junit: tests/results.xml
-      - run:
-          name: Display Test Results
-          command: cat tests/results.xml      
-      - store_test_results:
-          path: tests/results.xml              
-
-
+      - run: 
+          name: Run MATLAB test with test splitting
+          command: |
+              cd tests/
+              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
+              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split)
+              echo "$SPLIT_TESTFILES"
+              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
+              echo "{$FORMATTED_TESTFILES}"
+              cd ..
+              matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"           
           
 workflows:
-  matlab_task_disp_xml :
+  SPLIT_BY_FILE_NAME :
     jobs:
       - build
