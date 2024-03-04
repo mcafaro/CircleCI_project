@@ -15,8 +15,8 @@ function runTestsAndGenerateReports(testFiles)
 
     % Loop over each file and create a test suite
     for i = 1:length(testFiles)
-        % Construct the full path to the test file, adding the .m extension
-        testFilePath = fullfile(testFolder, [testFiles{i}, '.m']);
+        % Construct the full path to the test file
+        testFilePath = fullfile(testFolder, testFiles{i});
 
         % Append the test suite for each file to the cell array of test suites
         suites{end+1} = TestSuite.fromFile(testFilePath);
