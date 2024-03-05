@@ -5,6 +5,7 @@ jobs:
   build:
     machine: true
     resource_class: vandit/agent_pool
+    parallelism: 2
     steps:
       - checkout
       - matlab/install
@@ -12,10 +13,15 @@ jobs:
           name: Run MATLAB test with test splitting
           command: |
               echo "hello from local"
-            
+              cd tests/
+              TESTFILES=$(circleci tests glob "**"| circleci tests split --split-by=name)
+              echo "$TESTFILES"      
+              FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
+              cd ..
+              matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"            
 
           
 workflows:
-  run_local_agent:
+  run_local_agent_split:
     jobs:
       - build
