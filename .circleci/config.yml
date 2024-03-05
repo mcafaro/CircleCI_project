@@ -5,7 +5,7 @@ jobs:
   build:
     machine: true
     resource_class: vandit/agent_pool
-    parallelism: 2
+    parallelism: 3
     steps:
       - checkout
       - run: 
@@ -17,7 +17,7 @@ jobs:
               echo "$TESTFILES"      
               FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
               cd ..
-              matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"            
+              matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"            
 
           
 workflows:
