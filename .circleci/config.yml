@@ -3,25 +3,19 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:current
-    parallelism: 2  
+    machine: true
+    resource_class: vandit/agent_pool
     steps:
       - checkout
       - matlab/install
       - run: 
           name: Run MATLAB test with test splitting
           command: |
-              cd tests/
-              TESTFILES=$(circleci tests glob "**"| circleci tests split --split-by=name)
-              echo "$TESTFILES"      
-              FORMATTED_TESTFILES=$(echo "$TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
-              cd ..
-              matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
+              echo "hello from local"
             
 
           
 workflows:
-  SPLIT_BY_FILE_NAME:
+  run_local_agent:
     jobs:
       - build
