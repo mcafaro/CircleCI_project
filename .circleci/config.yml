@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     machine: true
-    resource_class: vandit/my_reosurce
+    resource_class: vandit/my_resource
     parallelism: 1
     steps:
       - checkout
