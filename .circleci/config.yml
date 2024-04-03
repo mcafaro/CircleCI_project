@@ -13,6 +13,7 @@ jobs:
           command: |   
               TESTFILES=$(circleci tests glob "**/*.m")
               echo "$TESTFILES"
+              echo "hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
               #TESTFILES="testAbsValue_basic testAbsValue_parameterized testCubeRoot_basic testCubeRoot_parameterized" 
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split)
               echo "$SPLIT_TESTFILES"
