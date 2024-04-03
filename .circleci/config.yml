@@ -11,12 +11,11 @@ jobs:
       - run:
           command: |
             TESTFILES="TestAbsValue_basic.m TestAbsValue_parameterized.m TestCubeRoot_basic.m TestCubeRoot_parameterized.m" 
-            echo $TESTFILES | tr ' ' '\n' > circleci_test_files1.txt
-            TESTFILES=$(circleci tests split --split-by=timings circleci_test_files1.txt)
+            TESTFILES=echo $TESTFILES | tr ' ' '\n | circleci tests split 
             echo $TESTFILES
             
                    
 workflows:
-  storing_text_file:
+  storing_variable:
     jobs:
       - build
