@@ -10,9 +10,9 @@ jobs:
       - checkout
       - run: 
           name: display glob
-          command: |
-              cd tests/    
-              TESTFILES="testAbsValue_basic testAbsValue_parameterized testCubeRoot_basic testCubeRoot_parameterized" 
+          command: |   
+              TESTFILES=$(circleci tests glob "**/*.m")
+              #TESTFILES="testAbsValue_basic testAbsValue_parameterized testCubeRoot_basic testCubeRoot_parameterized" 
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split)
               echo "$SPLIT_TESTFILES"
                    
