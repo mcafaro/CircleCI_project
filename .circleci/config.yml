@@ -10,13 +10,13 @@ jobs:
       - checkout
       - run:
           command: |
-            TESTFILES="test1.py test2.py test3.py" # replace with your list of test files
-            echo $TESTFILES | tr ' ' '\n' > circleci_test_files.txt
-            TESTFILES=$(circleci tests split --split-by=timings circleci_test_files.txt)
+            TESTFILES="TestAbsValue_basic.m TestAbsValue_parameterized.m TestCubeRoot_basic.m TestCubeRoot_parameterized.m" 
+            echo $TESTFILES | tr ' ' '\n' > circleci_test_files1.txt
+            TESTFILES=$(circleci tests split --split-by=timings circleci_test_files1.txt)
             echo $TESTFILES
-            # run your tests with the split files
+            
                    
 workflows:
-  without_glob:
+  storing_text_file:
     jobs:
       - build
