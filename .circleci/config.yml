@@ -11,14 +11,14 @@ jobs:
       - run: 
           name: display glob
           command: |   
-              TESTFILES=$(circleci tests glob "**/*.m")
-              echo "$TESTFILES"
+              TESTFILES = "A.m B.m C.m D.m E.m F.m"
+              echo $TESTFILES > circleci_test_files.txt
               echo "hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
               #TESTFILES="testAbsValue_basic testAbsValue_parameterized testCubeRoot_basic testCubeRoot_parameterized" 
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split)
+              SPLIT_TESTFILES=$(circleci tests split circleci_test_files.txt)
               echo "$SPLIT_TESTFILES"
                    
 workflows:
-  glob_learning:
+  without_glob:
     jobs:
       - build
