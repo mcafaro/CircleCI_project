@@ -11,7 +11,7 @@ jobs:
       - run:
           command: |
             TESTFILES="TestAbsValue_basic.m TestAbsValue_parameterized.m TestCubeRoot_basic.m TestCubeRoot_parameterized.m" 
-            TESTFILES=echo $TESTFILES | tr ' ' '\n | circleci tests split 
+            TESTFILES=echo $TESTFILES | tr ' ' '\n' | circleci tests split 
             echo $TESTFILES
             
                    
