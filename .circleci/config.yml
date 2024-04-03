@@ -3,18 +3,18 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine: true
-    resource_class: vandit/my_resource
-    parallelism: 1
+    machine:
+      image: ubuntu-2004:current
+    parallelism: 2  
     steps:
       - checkout
       - run: 
-          name: Run MATLAB test with test splitting
+          name: display glob
           command: |
-              echo "hello from local"          
-
-          
+              cd tests/
+              echo $(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
+                   
 workflows:
-  run_local_agent:
+  glob_learning:
     jobs:
       - build
