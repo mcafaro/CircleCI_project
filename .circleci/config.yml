@@ -8,15 +8,13 @@ jobs:
     parallelism: 2  
     steps:
       - checkout
-      - run: 
-          name: display glob
-          command: |   
-              TESTFILES = "A.m B.m C.m D.m E.m F.m"
-              echo $TESTFILES > circleci_test_files.txt
-              echo "hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-              #TESTFILES="testAbsValue_basic testAbsValue_parameterized testCubeRoot_basic testCubeRoot_parameterized" 
-              SPLIT_TESTFILES=$(circleci tests split circleci_test_files.txt)
-              echo "$SPLIT_TESTFILES"
+      - run:
+          command: |
+            TESTFILES="test1.py test2.py test3.py" # replace with your list of test files
+            echo $TESTFILES | tr ' ' '\n' > circleci_test_files.txt
+            TESTFILES=$(circleci tests split --split-by=timings circleci_test_files.txt)
+            echo $TESTFILES
+            # run your tests with the split files
                    
 workflows:
   without_glob:
