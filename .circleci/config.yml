@@ -11,7 +11,7 @@ jobs:
           command: |
             cd 'F:\sbs\37\vandita.Btestframework.j2547610\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest'
             ls
-      - matlab/run-tests:
+      - matlab/run-tests
 
 
  
