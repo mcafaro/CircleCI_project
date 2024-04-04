@@ -6,6 +6,7 @@ jobs:
     machine: true
     resource_class: vandit/class_window 
     steps:
+      - checkout
       - matlab/run-tests
 
 
