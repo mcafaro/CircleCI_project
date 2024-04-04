@@ -4,11 +4,8 @@ orbs:
 jobs:
   build:
     machine: true
-    resource_class: vandit/class_window
-    parallelism: 2  
+    resource_class: vandit/class_window 
     steps:
-      - matlab/install:
-          products: Parallel_Computing_Toolbox
       - run:
           name: "Moving to Directory"
           command: |
