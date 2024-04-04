@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     machine: true
-    resource_class: vandit/class_window 
+    resource_class: vandit/class_window  
     steps:
       - matlab/run-tests
 
