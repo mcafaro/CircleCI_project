@@ -6,11 +6,6 @@ jobs:
     machine: true
     resource_class: vandit/class_window 
     steps:
-      - run: 
-          name: "Moving to Directory"
-          command: |
-            cd 'F:\sbs\37\vandita.Btestframework.j2547610\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest'
-            ls
       - matlab/run-tests
 
 
