@@ -7,8 +7,8 @@ jobs:
     resource_class: vandit/class_window  
     steps: 
       - checkout    
-      - matlab/run-tests:
-          use-parallel: true
+      - matlab/run-command:
+          command: pwd
                            
 workflows:
   self_hosted_runner_run_test_use_parallel:
