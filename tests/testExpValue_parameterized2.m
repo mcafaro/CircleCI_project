@@ -1,4 +1,4 @@
-classdef testExpValue_parameterized < matlab.unittest.TestCase
+classdef testExpValue_parameterized2 < matlab.unittest.TestCase
     
     properties (TestParameter)
         inputs = {0, 1, -1, 2};
