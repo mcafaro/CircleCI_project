@@ -8,9 +8,9 @@ jobs:
     parallelism: 2
     steps:
       - checkout
-      - matlab/run:
+      - matlab/run-command:
           command: "disp('Hello, World!')"
 workflows:
-  self-hosted_open_MATLAB:
+  self_hosted_open_matlab:
     jobs:
       - build
