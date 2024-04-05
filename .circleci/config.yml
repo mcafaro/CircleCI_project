@@ -4,12 +4,12 @@ orbs:
 jobs:
   build:
     machine: true
-    resource_class: vandit/class_window  
+    resource_class: vandit/my_class  
     steps: 
       - checkout    
       - matlab/run-tests
                            
 workflows:
-  self_hosted_runner_network_repo:
+  self_hosted_runner:
     jobs:
       - build
