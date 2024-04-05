@@ -1,4 +1,4 @@
-classdef testFactorialValue_parameterized < matlab.unittest.TestCase
+classdef testFactorialValue_parameterized2 < matlab.unittest.TestCase
     
     properties (TestParameter)
         inputs = {0, 1, 5, 7};
