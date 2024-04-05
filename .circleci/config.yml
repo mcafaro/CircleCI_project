@@ -3,16 +3,15 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine: true
-    resource_class: vandit/class_window  
-    steps: 
+    machine:
+      image: ubuntu-2004:current
+    steps:
+      - checkout
+      - matlab/install
       - matlab/run-tests
- 
-
- 
-          
+           
                    
 workflows:
-  self_hosted_runner_network_repo:
+  cloudrunner:
     jobs:
       - build
