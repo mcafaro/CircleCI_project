@@ -5,7 +5,7 @@ jobs:
   build:
     machine:
       image: ubuntu-2004:current
-    parallelism: 3 
+    parallelism: 4 
     steps:
       - checkout
       - matlab/install
