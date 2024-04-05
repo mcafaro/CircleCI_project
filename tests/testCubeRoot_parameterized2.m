@@ -1,4 +1,4 @@
-classdef testCubeRoot_parameterized < matlab.unittest.TestCase
+classdef testCubeRoot_parameterized2 < matlab.unittest.TestCase
     
     properties (TestParameter)
         positiveInputs = {8, 27, 64, 125};
