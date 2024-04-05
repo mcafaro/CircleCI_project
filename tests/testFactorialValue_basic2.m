@@ -1,4 +1,4 @@
-classdef testFactorialValue_basic < matlab.unittest.TestCase
+classdef testFactorialValue_basic2 < matlab.unittest.TestCase
     
     methods (TestClassSetup)
         function addTestContentToPath(testCase)
