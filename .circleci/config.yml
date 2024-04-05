@@ -4,18 +4,12 @@ orbs:
 jobs:
   build:
     machine: true
-    resource_class: vandit/class_window 
-    steps:
-      - checkout
-      - run:
-         shell: powershell.exe
-         command: 
-              Write-Output "Current Working Directory:"
-              pwd
-                       
-              Write-Output "Listing all files and directories:"
-              Get-ChildItem -Force
+    resource_class: vandit/class_window  
+    steps: 
+      - checkout    
+      - matlab/run-tests
+                           
 workflows:
-  self_hosted:
+  self_hosted_runner_network_repo:
     jobs:
       - build
