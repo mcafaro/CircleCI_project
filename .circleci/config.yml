@@ -8,6 +8,7 @@ jobs:
     parallelism: 2
     steps:
       - checkout
+      - matlab/install
       - matlab/run-command:
           command: "disp('Hello, World!')"
 workflows:
