@@ -1,4 +1,4 @@
-classdef testNthRoot_parameterized < matlab.unittest.TestCase
+classdef testNthRoot_parameterized2 < matlab.unittest.TestCase
     
     properties (TestParameter)
         positiveInputs = {16, 32, 243, 1024};
