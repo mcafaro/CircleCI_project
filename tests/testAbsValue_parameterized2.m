@@ -1,4 +1,4 @@
-classdef testAbsValue_parameterized < matlab.unittest.TestCase
+classdef testAbsValue_parameterized2 < matlab.unittest.TestCase
     
     properties (TestParameter)
         inputs = {-5, 5, -3.2, 3.2, 0};
