@@ -8,6 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
+         shell: powershell.exe
          command: 
               Write-Output "Current Working Directory:"
               pwd
