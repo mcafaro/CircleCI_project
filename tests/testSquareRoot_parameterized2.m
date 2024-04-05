@@ -1,4 +1,4 @@
-classdef testSquareRoot_parameterized < matlab.unittest.TestCase
+classdef testSquareRoot_parameterized2 < matlab.unittest.TestCase
     
     properties (TestParameter)
         inputs = {4, 16, 81, 121, 49};
