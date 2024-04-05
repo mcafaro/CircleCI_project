@@ -7,10 +7,9 @@ jobs:
     resource_class: vandit/class_window 
     steps:
       - checkout
-      - matlab/install
-      - matlab/run-command:
-          command: "disp('Hello, World!')"
+      - run:
+          command: pwd
 workflows:
-  self_hosted_open_matlab:
+  self_hosted:
     jobs:
       - build
