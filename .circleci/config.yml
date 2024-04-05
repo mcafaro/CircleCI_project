@@ -7,11 +7,12 @@ jobs:
       image: ubuntu-2004:current
     steps:
       - checkout
-      - matlab/install
-      - matlab/run-tests
-           
+      - matlab/install:
+          products: Parallel_Computing_Toolbox
+      - matlab/run-tests:
+          use-parallel: true
                    
 workflows:
-  cloudrunner:
+  cloudrunner_my_repo_useParallel:
     jobs:
       - build
