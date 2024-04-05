@@ -5,7 +5,7 @@ jobs:
   build:
     machine:
       image: ubuntu-2004:current
-    parallelism: 2  
+    parallelism: 3 
     steps:
       - checkout
       - matlab/install
@@ -27,6 +27,6 @@ jobs:
 
           
 workflows:
-  parallel_2_cloud_my_repo:
+  parallel_3_cloud_my_repo:
     jobs:
       - build
