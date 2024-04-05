@@ -7,9 +7,10 @@ jobs:
     resource_class: vandit/class_window  
     steps: 
       - checkout    
-      - matlab/run-tests
+      - matlab/run-tests:
+          use-parallel: true
                            
 workflows:
-  self_hosted_runner_network_repo:
+  self_hosted_runner_run_test_use_parallel:
     jobs:
       - build
