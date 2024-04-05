@@ -5,7 +5,6 @@ jobs:
   build:
     machine: true
     resource_class: vandit/class_window 
-    parallelism: 2
     steps:
       - checkout
       - matlab/install
