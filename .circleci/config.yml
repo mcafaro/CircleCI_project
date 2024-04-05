@@ -8,7 +8,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: pwd
+          command: |
+            pwd
+            ls
 workflows:
   self_hosted:
     jobs:
