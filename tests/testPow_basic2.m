@@ -1,4 +1,4 @@
-classdef testPow_basic < matlab.unittest.TestCase
+classdef testPow_basic2 < matlab.unittest.TestCase
     
     methods (TestClassSetup)
         function addTestContentToPath(testCase)
