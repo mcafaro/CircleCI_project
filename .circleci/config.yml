@@ -1,4 +1,4 @@
-version: '2.1' 
+version: '2.1'
 orbs:
   matlab: mathworks/matlab@1
 jobs:
@@ -8,9 +8,8 @@ jobs:
     steps: 
       - checkout    
       - matlab/run-tests
-         
                            
 workflows:
-  self_hosted_runner_run_test_use_parallel:
+  self_hosted_runner_network_repo:
     jobs:
       - build
