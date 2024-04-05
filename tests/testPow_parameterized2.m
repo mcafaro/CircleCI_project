@@ -1,4 +1,4 @@
-classdef testPow_parameterized < matlab.unittest.TestCase
+classdef testPow_parameterized2 < matlab.unittest.TestCase
     
     properties (TestParameter)
         bases = {2, 3, 10, 1, 0};
