@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - matlab/install
-      - run: 
+      - run:  
           name: Run MATLAB test with test splitting
           command: |
               cd tests/
