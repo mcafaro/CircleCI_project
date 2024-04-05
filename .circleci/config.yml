@@ -8,9 +8,12 @@ jobs:
     steps:
       - checkout
       - run:
-          command: |
-            pwd
-            ls
+         command: 
+              Write-Output "Current Working Directory:"
+              pwd
+                       
+              Write-Output "Listing all files and directories:"
+              Get-ChildItem -Force
 workflows:
   self_hosted:
     jobs:
