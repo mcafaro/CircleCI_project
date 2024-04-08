@@ -3,13 +3,27 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine: true
-    resource_class: vandit/my_class  
-    steps: 
-      - checkout    
-      - matlab/run-tests
-                           
+    machine:
+      image: ubuntu-2004:current
+    parallelism: 2 
+    steps:
+      - checkout
+      - matlab/install
+      - run:  
+          name: Run MATLAB test with circle ci test split
+          command: |
+              cd tests/
+              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
+              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
+              cd ..
+              circleci tests run --command "matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})" 
+
+      - store_test_results:
+          path: tests/results.xml              
+
+
+          
 workflows:
-  self_hosted_runner:
+  parallel_3_cloud_my_repo:
     jobs:
       - build
