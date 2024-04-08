@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     machine: true
-    resource_class: vandit/my_class  
+    resource_class: vandit/vdi
     steps: 
       - checkout    
                            
