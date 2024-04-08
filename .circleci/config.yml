@@ -6,7 +6,9 @@ jobs:
     machine: true
     resource_class: vandit/vdi
     steps: 
-      - checkout    
+      - checkout   
+      - run:
+          command: pwd 
                            
 workflows:
   self_hosted_runner:
