@@ -1,8 +1,15 @@
+version: '2.1'
+orbs:
+  matlab: mathworks/matlab@1
 jobs:
   build:
     machine: true
-    resource_class: vandit/my_class
-    working_directory: ./Workdir
-    steps:
-      - run: pwd
-      # Your other steps follow
+    resource_class: vandit/my_class  
+    steps: 
+      - checkout    
+      - matlab/run-tests
+                           
+workflows:
+  self_hosted_runner:
+    jobs:
+      - build
