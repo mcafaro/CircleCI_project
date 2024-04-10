@@ -7,9 +7,7 @@ jobs:
     resource_class: vandit/vdi
     steps: 
       - checkout   
-      - run:
-          command: dir
-          shell: cmd.exe
+      - matlab/run-tests
                            
 workflows:
   self_hosted_runner_ls:
