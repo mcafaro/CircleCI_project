@@ -8,9 +8,10 @@ jobs:
     steps: 
       - checkout   
       - run:
-          command: pwd 
+          command: dir
+          shell: cmd.exe
                            
 workflows:
-  self_hosted_runner:
+  self_hosted_runner_ls:
     jobs:
       - build
