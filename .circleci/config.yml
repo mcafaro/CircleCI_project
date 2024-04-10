@@ -38,7 +38,7 @@ jobs:
               unzip -qod "${tmpdir}/scriptgen" "${tmpdir}/scriptgen.zip"
 
               echo "please print the present working directory"
-              pwd
+              echo $tmpdir
 
 
 
