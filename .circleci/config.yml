@@ -14,4 +14,4 @@ jobs:
 workflows:
   self_hosted_runner_ls:
     jobs:
-      - build
+      - build 
