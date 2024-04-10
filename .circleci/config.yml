@@ -10,6 +10,6 @@ jobs:
       - matlab/run-tests
                            
 workflows:
-  self_hosted_runner_ls:
+  self_hosted_runner_matlab_run_tests:
     jobs:
-      - build   
+      - build    
