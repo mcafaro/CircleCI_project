@@ -24,7 +24,7 @@ jobs:
               echo "{$FORMATTED_TESTFILES}"
               echo "ENDING ................."
               cd ..
-              echo "$FORMATTED_TESTFILES" | circleci tests run --command "xargs matlab-batch 'runTestsAndGenerateReports'" --split-by=timings       
+              echo "circleci tests run --command "xargs matlab-batch 'runTestsAndGenerateReports'" --split-by=timings       
 
       - store_test_results:
           path: tests/results.xml
