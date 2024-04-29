@@ -14,6 +14,10 @@ jobs:
       - run:  
           name: Run MATLAB test with test splitting
           command: |
+              cd tests/
+              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
+              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings)
+
               matlab-batch "runTestsAndGenerateReports()"
 
       - store_test_results:
@@ -22,6 +26,6 @@ jobs:
 
           
 workflows:
-  custom_function_with_version:
+  custom_function:
     jobs:
       - build
