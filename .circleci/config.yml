@@ -17,8 +17,7 @@ jobs:
               cd tests/
               TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings)
-
-              matlab-batch "runTestsAndGenerateReports"
+              matlab-batch "runTestsAndGenerateReports()"
 
       - store_test_results:
           path: tests-results             
