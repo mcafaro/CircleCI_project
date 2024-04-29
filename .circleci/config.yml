@@ -8,7 +8,9 @@ jobs:
     parallelism: 2 
     steps:
       - checkout
-      - matlab/install
+      - matlab/install:
+          release: R2023a
+
       - run:  
           name: Run MATLAB test with test splitting
           command: |
@@ -20,6 +22,6 @@ jobs:
 
           
 workflows:
-  custom_function:
+  custom_function_with_version:
     jobs:
       - build
