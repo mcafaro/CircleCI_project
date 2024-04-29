@@ -24,7 +24,7 @@ jobs:
               echo "{$FORMATTED_TESTFILES}"
               echo "ENDING ................."
               cd ..
-              circleci test run --command "matlab-batch 'runTestsAndGenerateReports({$FORMATTED_TESTFILES})'"        
+              circleci tests run --command "matlab-batch 'runTestsAndGenerateReports({$FORMATTED_TESTFILES})'"        
 
 
           
