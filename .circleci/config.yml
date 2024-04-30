@@ -24,7 +24,9 @@ jobs:
               matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"         
 
       - run:
-          command: whoami
+          command: |
+            MACHINE_NAME=$(hostname)
+            echo "The name of the machine is: $MACHINE_NAME"
           
 workflows:
   circleci_test_split_command:
