@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Access a network path with PowerShell
           command: |
-              cd C:\Users\vandita\Downloads\unittest
+              cd C:/Users/vandita/Downloads/unittest
       - matlab/run-tests
        
                      
