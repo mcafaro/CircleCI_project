@@ -10,8 +10,7 @@ jobs:
           command: |
             tmpdir=$(mktemp -d 2>/dev/null || mktemp -d -t 'run-tests')
             echo "Temporary directory is created at: $tmpdir"
-            curl -sfLo "${tmpdir}/scriptgen.zip"
-            https://ssd.mathworks.com/supportfiles/ci/matlab-script-generator/v0/matlab-script-generator.zip          
+            curl -sfLo "${tmpdir}/scriptgen.zip" https://ssd.mathworks.com/supportfiles/ci/matlab-script-generator/v0/matlab-script-generator.zip          
  
 
  
