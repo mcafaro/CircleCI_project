@@ -3,32 +3,16 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:current
-    parallelism: 2 
-    steps:
-      - checkout
-      - matlab/install:
-          release: R2023a
+    machine: true
+    resource_class: vandit/vdi
+    steps: 
+      - matlab/run-tests
+ 
 
-      - run:  
-          name: circleci test split
-          command: |
-              cd tests/
-              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
-              echo "$SPLIT_TESTFILES"
-              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
-              echo "{$FORMATTED_TESTFILES}"
-              cd ..
-              matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"         
-
-      - run:
-          command: |
-            MACHINE_NAME=$(hostname)
-            echo "The name of the machine is: $MACHINE_NAME"
-          
+ 
+            
+                   
 workflows:
-  circleci_test_split_command:
+  vdi:
     jobs:
       - build
