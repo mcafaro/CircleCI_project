@@ -6,13 +6,17 @@ jobs:
     machine: true
     resource_class: vandit/vdi
     steps: 
-      - matlab/run-tests
+      - run:
+          command: |
+            tmpdir=$(mktemp -d 2>/dev/null || mktemp -d -t 'run-tests')
+            echo "Temporary directory is created at: $tmpdir"
+            
  
 
  
             
                    
 workflows:
-  vdi:
+  vdi_tmpdir_location:
     jobs:
       - build
