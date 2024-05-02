@@ -6,13 +6,14 @@ jobs:
     machine: true
     resource_class: vandit/lease
     steps: 
-     
-      - run:
-          command: |
-                  cd \\mathworks\devel\jobarchive\BR2023bd\latest_pass\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest       
-          shell: powershell.exe -noprofile -noninteractive -command          
+     - run:
+            name: Access a network path with PowerShell
+            command: |
+                cd '\\mathworks\devel\jobarchive\BR2023bd\latest_pass\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest'
+                # Other PowerShell commands here
+            shell: powershell.exe -noprofile -noninteractive -command      
 
-      - matlab/run-tests       
+     - matlab/run-tests       
   
             
                      
