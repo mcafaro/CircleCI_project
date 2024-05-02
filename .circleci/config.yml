@@ -7,7 +7,7 @@ jobs:
     resource_class: vandit/lease
     steps: 
       - matlab/run-tests:
-          select-by-folder: C:\Users\vandita\Downloads\unittest
+          source-folder: C:\Users\vandita\Downloads\unittest
        
                      
 workflows:  
