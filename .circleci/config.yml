@@ -12,5 +12,5 @@ jobs:
                     
 workflows:  
   vdi_tmpdir_location:
-    jobs:
+    jobs: 
       - build
