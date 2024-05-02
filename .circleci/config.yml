@@ -10,7 +10,7 @@ jobs:
       - run:
           command: |
                   cd \\mathworks\devel\jobarchive\BR2023bd\latest_pass\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest       
-          shell: pwsh -noprofile -noninteractive -command          
+          shell: powershell.exe -noprofile -noninteractive -command          
 
       - matlab/run-tests       
   
