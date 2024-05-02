@@ -6,11 +6,8 @@ jobs:
     machine: true
     resource_class: vandit/lease
     steps: 
-      - run:
-          name: Access a network path with PowerShell
-          command: |
-              cd C:/Users/vandita/Downloads/unittest
-      - matlab/run-tests
+      - matlab/run-tests:
+          select-by-folder: C:\Users\vandita\Downloads\unittest
        
                      
 workflows:  
