@@ -8,9 +8,7 @@ jobs:
     steps: 
       - matlab/run-tests:
           source-folder: C:\Users\vandita\Downloads\unittest
-          select-by-folder: C:\Users\vandita\Downloads\unittest\@dummyClassForSelector
-       
-                     
+                        
 workflows:  
   actual_test_cases:
     jobs: 
