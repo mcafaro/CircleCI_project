@@ -6,10 +6,8 @@ jobs:
     machine: true
     resource_class: vandit/lease
     steps: 
-      - run:
-          command: 
-              matlab -batch ver
-              
+     
+      - checkout         
       - matlab/run-tests       
   
             
