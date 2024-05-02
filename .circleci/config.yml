@@ -8,8 +8,9 @@ jobs:
     steps: 
       - run:
           command: |
-            tmpdir=$(mktemp -d 2>/dev/null || mktemp -d -t 'run-tests')
-            echo "Temporary directory is created at: $tmpdir"
+            $tmpdir = New-TemporaryFile | ForEach-Object { $_.DirectoryName }
+            Remove-Item $tmpdir -Force # This is just to get the directory path; we delete the temp file immediately.
+            Write-Host "Temporary directory is created at: $tmpdir"
             
  
 
