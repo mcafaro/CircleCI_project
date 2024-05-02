@@ -6,7 +6,9 @@ jobs:
     machine: true
     resource_class: vandit/kapilg-vdi
     steps: 
-       - matlab/run-tests
+      - run:
+          command: 
+              matlab -batch ver
  
             
                     
