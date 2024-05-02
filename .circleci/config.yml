@@ -11,7 +11,7 @@ jobs:
           command: |
               New-PSDrive -Name "Z" -PSProvider "FileSystem" -Root "\\mathworks\devel\jobarchive\BR2023bd\latest_pass\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest" -Persist
               cd "Z:\"
-            
+          shell: powershell.exe -noprofile -noninteractive -command  
       - matlab/run-tests
        
                      
