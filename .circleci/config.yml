@@ -15,6 +15,6 @@ jobs:
             
                     
 workflows:  
-  vdi_tmpdir_location:
+  lease:
     jobs: 
-      - build 
+      - build  
