@@ -9,9 +9,11 @@ jobs:
       - run:
           command: 
               matlab -batch ver
+              
+      - matlab/run-tests       
  
             
-                     
+                    
 workflows:  
   vdi_tmpdir_location:
     jobs: 
