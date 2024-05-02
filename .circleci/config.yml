@@ -7,12 +7,14 @@ jobs:
     resource_class: vandit/lease
     steps: 
      
-      - checkout         
+      - run:
+          command: |
+                  cd \\mathworks\devel\jobarchive\BR2023bd\latest_pass\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest       
       - matlab/run-tests       
   
             
                      
 workflows:  
-  lease:
+  actual_test_cases:
     jobs: 
       - build  
