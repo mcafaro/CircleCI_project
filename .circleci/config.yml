@@ -6,6 +6,9 @@ jobs:
     machine: true
     resource_class: vandit/lease
     steps: 
+      - run:
+          command: echo pwd
+          
       - matlab/run-tests:
           select-by-folder: \tests\unittest
                         
