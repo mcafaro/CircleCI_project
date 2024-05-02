@@ -9,8 +9,7 @@ jobs:
       - run:  
           command: pwd
           
-      - matlab/run-tests:
-          select-by-folder: \tests\unittest
+      - matlab/run-tests
                          
 workflows:  
   actual_test_cases:
