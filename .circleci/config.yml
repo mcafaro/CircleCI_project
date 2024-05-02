@@ -9,7 +9,7 @@ jobs:
      
       - run:
           command: |
-                  cd \\mathworks\devel\jobarchive\BR2023bd\latest_pass\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest       
+                  cd \\mathworks/devel/jobarchive/BR2023bd/latest_pass/matlab/test/toolbox/matlab/testframework/unittest/core/matlab/unittest       
       - matlab/run-tests       
   
             
