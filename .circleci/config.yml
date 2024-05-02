@@ -9,8 +9,8 @@ jobs:
       - run:
           name: Access a network path with PowerShell
           command: |
-            Set-Location -Path 'C:\Users\vandita\Downloads'
-          shell: powershell.exe -noprofile -noninteractive -command               
+           cd 'C:\Users\vandita\Downloads'
+       
                      
 workflows:  
   actual_test_cases:
