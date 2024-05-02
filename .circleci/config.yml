@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Access a network path with PowerShell
           command: |
-            Set-Location -Path '\\mathworks\devel\jobarchive\BR2023bd\latest_pass\matlab\test\toolbox\matlab\testframework\unittest\core\matlab\unittest'
+            Set-Location -Path 'C:\Users\vandita\Downloads'
           shell: powershell.exe -noprofile -noninteractive -command               
                      
 workflows:  
