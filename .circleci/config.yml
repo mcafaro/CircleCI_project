@@ -3,15 +3,16 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine: true
-    resource_class: vandit/lease
-    steps: 
-      - run:  
-          command: pwd
-          
-      - matlab/run-tests
-                         
-workflows:  
-  actual_test_cases:
-    jobs: 
-      - build  
+    machine:
+      image: ubuntu-2004:current
+    steps:
+      - checkout
+      - matlab/install:
+          products: Parallel_Computing_Toolbox
+      - matlab/run-tests:
+          use-parallel: true
+                   
+workflows:
+  cloudrunner_my_repo_useParallel:
+    jobs:
+      - build
