@@ -13,6 +13,6 @@ jobs:
 
           
 workflows:
-  number_parpool_self:
-    jobs:
+  number_parpool_self_8:
+    jobs: 
       - build
