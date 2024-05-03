@@ -8,6 +8,7 @@ classdef testAbsValue_parameterized < matlab.unittest.TestCase
     methods (TestClassSetup)
         function addTestContentToPath(testCase)
             addpath(fullfile(fileparts(pwd),'source'));
+             pause(10);
         end
     end
     
