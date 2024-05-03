@@ -5,14 +5,28 @@ jobs:
   build:
     machine:
       image: ubuntu-2004:current
+    parallelism: 2  
     steps:
       - checkout
-      - matlab/install:
-          products: Parallel_Computing_Toolbox
-      - matlab/run-tests:
-          use-parallel: true
-                   
+      - matlab/install
+      - run:  
+          name: Run MATLAB test with test splitting
+          command: |
+              cd tests/
+              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
+              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
+              echo "$SPLIT_TESTFILES"
+              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
+              echo "{$FORMATTED_TESTFILES}"
+              cd ..
+              matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
+
+      - store_test_results:
+          path: tests/results.xml              
+
+
+          
 workflows:
-  cloudrunner_my_repo_useParallel:
+  parallel_2_cloud_my_repo:
     jobs:
       - build
