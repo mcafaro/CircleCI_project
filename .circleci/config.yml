@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - matlab/install:
-          release: R2023b
+          release: R2023b 
       - run:  
           name: Run MATLAB test with test splitting
           command: |
