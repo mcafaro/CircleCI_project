@@ -1,17 +1,18 @@
-version: '2.1'  
+version: '2.1'
 orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
     machine: true
     resource_class: vandit/lease
-    steps:
-      - checkout
-      - matlab/run-tests
-
-
+    steps: 
+      - run: 
+          command: pwd
           
-workflows:
-  serial:
+      - matlab/run-tests:
+          select-by-folder: \unittest
+                         
+workflows:  
+  actual_test_cases_2:
     jobs: 
-      - build
+      - build  
