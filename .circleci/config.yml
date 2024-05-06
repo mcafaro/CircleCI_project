@@ -3,13 +3,10 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:current
+    machine: true 
+    resource_class: vandit_lease 
     parallelism: 2  
     steps:
-      - checkout
-      - matlab/install:
-          release: R2023b 
       - run:  
           name: Run MATLAB test with test splitting
           command: |
