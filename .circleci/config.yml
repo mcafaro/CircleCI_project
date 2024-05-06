@@ -3,17 +3,28 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine: true
-    resource_class: vandit/lease
-    steps: 
-      - run: 
-          command: pwd
+    machine:
+      image: ubuntu-2004:current
+    parallelism: 2  
+    steps:
+      - checkout
+      - matlab/install:
+          release: R2023b 
+      - run:  
+          name: Run MATLAB test with test splitting
+          command: |
+              cd unittest/
+              ls
+              
+
+      - store_test_results:
+          path: tests/results.xml              
+
+
           
-      - matlab/run-tests:
-          select-by-folder: \unittest
-                          
-workflows:   
-  actual_test_cases_2:
-    jobs:  
-      - build  
+workflows:
+  circleci_test_split_actual_test:
+    jobs:
+      - build
+
  
