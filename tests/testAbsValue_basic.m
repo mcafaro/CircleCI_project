@@ -15,7 +15,7 @@ classdef testAbsValue_basic < matlab.unittest.TestCase
         end
         
         function testNegativeValue(testCase)
-            testCase.verifyEqual(absValue(-10),5);
+            testCase.verifyEqual(absValue(-10),10);
         end
         
         function testZeroValue(testCase)
