@@ -7,16 +7,19 @@ jobs:
     resource_class: vandit/lease 
     parallelism: 2  
     steps:
+      - run:
+          name: Print the Name of the Machine
+          command: |
+            echo "The name of the machine is:"
+            hostname      
       - run:  
           name: Run MATLAB test with test splitting
           command: |
               cd unittest/tests/
-              ls
               echo "finishing.................................................................................................."
               TESTFILES=$(circleci tests glob "**/*.m")
               echo "$TESTFILES"
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
-              echo "$SPLIT_TESTFILES"
               # FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
               # cd ..
               # matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
