@@ -7,14 +7,12 @@ jobs:
     resource_class: vandit/lease 
     parallelism: 2  
     steps:
+      - checkout 
       - run:  
           name: Run MATLAB test with test splitting
           command: |
             pwd
-
-      - store_test_results:
-          path: unittest/tests/results.xml              
-
+          
 
           
 workflows:
