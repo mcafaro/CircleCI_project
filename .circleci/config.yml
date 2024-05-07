@@ -3,32 +3,33 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:current
+    machine: true 
+    resource_class: vandit/lease 
     parallelism: 2  
     steps:
-      - checkout
-      - matlab/install:
-          release: R2023b 
       - run:  
           name: Run MATLAB test with test splitting
           command: |
-              cd tests/
-              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
+              cd unittest/tests/
+              ls
+              echo "finishing.................................................................................................."
+              TESTFILES=$(circleci tests glob "**/*.m")
               echo "$TESTFILES"
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
               echo "$SPLIT_TESTFILES"
-              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
-              echo "{$FORMATTED_TESTFILES}"
-              cd ..
-              matlab-batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
+              # FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
+              # cd ..
+              # matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
 
       - store_test_results:
-          path: tests/results.xml              
-
+          path: unittest/tests/results.xml               
+ 
 
           
 workflows:
-  parallel_2_cloud_my_repo:
+  circleci_test_split_actual_test:
     jobs:
       - build
+
+  
+ 
