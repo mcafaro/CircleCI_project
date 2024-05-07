@@ -11,6 +11,7 @@ jobs:
           name: Run MATLAB test with test splitting
           command: |
               cd unittest/tests/
+              ls
               TESTFILES=$(circleci tests glob "**/*.m")
               echo "$TESTFILES"
               # SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
