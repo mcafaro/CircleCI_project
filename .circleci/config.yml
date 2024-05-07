@@ -1,4 +1,4 @@
-version: '2.1' 
+version: '2.1'  
 orbs:
   matlab: mathworks/matlab@1
 jobs:
@@ -19,7 +19,6 @@ jobs:
               TESTFILES=$(circleci tests glob "**/*.m")
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
               FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
-              echo "$FORMATTED_TESTFILES"
               cd ..
               matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
 
