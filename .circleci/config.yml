@@ -14,7 +14,7 @@ jobs:
             hostname      
       - run:  
           name: Run MATLAB test with test splitting
-          command: |
+          command: | 
               cd unittest/tests/
               TESTFILES=$(circleci tests glob "**/*.m")
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
