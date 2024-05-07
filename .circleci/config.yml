@@ -1,21 +1,25 @@
-version: '2.1'  
+version: '2.1' 
 orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine: true
-    resource_class: vandit/vdi
+    machine: true 
+    resource_class: vandit/lease 
+    parallelism: 2  
     steps:
-      - checkout
-      - matlab/run-tests:
-          use-parallel: true   
+      - run:  
+          name: Run MATLAB test with test splitting
+          command: |
+            pwd
+
+      - store_test_results:
+          path: unittest/tests/results.xml              
 
 
           
-workflows: 
-  vdi:
+workflows:
+  circleci_test_split_actual_test:
     jobs:
       - build
-
 
  
