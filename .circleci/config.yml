@@ -10,12 +10,13 @@ jobs:
       - run:  
           name: Run MATLAB test with test splitting
           command: |
-              cd unittest/tests
-              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
-              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
-              cd ..
-              matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
+              cd tests
+              TESTFILES=$(circleci tests glob "**/*.m")
+              echo $TESTFILES
+              # SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
+              # FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
+              # cd ..
+              # matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
 
       - store_test_results:
           path: unittest/tests/results.xml               
