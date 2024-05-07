@@ -1,30 +1,21 @@
-version: '2.1' 
+version: '2.1'  
 orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine: true 
-    resource_class: vandit/lease 
-    parallelism: 2  
+    machine: true
+    resource_class: vandit/vdi
     steps:
-      - run:  
-          name: Run MATLAB test with test splitting
-          command: |
-              cd unittest/tests/
-              TESTFILES=$(circleci tests glob "**/*.m") 
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
-              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
-              cd ..
-              matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
-
-      - store_test_results:
-          path: unittest/tests/results.xml              
+      - checkout
+      - matlab/run-tests:
+          use-parallel: true  
 
 
           
 workflows:
-  circleci_test_split_actual_test:
+  vdi:
     jobs:
       - build
+
 
  
