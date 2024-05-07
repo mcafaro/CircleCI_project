@@ -13,7 +13,7 @@ jobs:
             echo "The name of the machine is:"
             hostname      
       - run:  
-          name: Run MATLAB test with test splitting
+          name: Run MATLAB test with test splitting 
           command: | 
               cd tests/
               TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
