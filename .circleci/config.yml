@@ -18,7 +18,7 @@ jobs:
               matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
 
       - store_test_results:
-          path: unittest/tests/results.xml              
+          path: unittest/tests/results.xml               
 
 
           
