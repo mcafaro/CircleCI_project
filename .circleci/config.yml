@@ -17,7 +17,7 @@ jobs:
           command: | 
               cd unittest/tests/
               TESTFILES=$(circleci tests glob "**/*.m")
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
+              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split)
               FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//')
               cd ..
               matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
