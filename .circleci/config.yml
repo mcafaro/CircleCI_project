@@ -27,12 +27,15 @@ jobs:
 
       - store_test_results: 
          path: tests/results.xml
+         
+      - store_artifacts:
+          path: tests/results.xml
       
    
  
            
 workflows:
-  circleci_test_split_self_hosted_runner_real_test:
+  artifacts:
     jobs:
       - build
 
