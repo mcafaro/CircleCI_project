@@ -7,7 +7,7 @@ jobs:
     resource_class: vandit/lease
     parallelism: 2  
     steps:
-      - run:
+      - run: 
           name: Print the Name of the Machine
           command: |
             echo "The name of the machine is:"
