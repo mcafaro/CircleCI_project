@@ -1,37 +1,16 @@
-version: '2.1'   
+version: '2.1'
 orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 2  
     steps:
-      - run:
-          name: Print the Name of the Machine
-          command: |
-            echo "The name of the machine is:"
-            hostname      
-      - run:  
-          name: Run MATLAB test with test splitting 
-          command: | 
-              cd "C:\Users\vandita\OneDrive - MathWorks\Desktop\actual_test\tests"
-              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings --timings-type=classname)
-              echo "$SPLIT_TESTFILES"
-              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//') 
-              echo "{$FORMATTED_TESTFILES}"
-              cd ..
-              matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
-         
-      
-   
-  
-           
+      - matlab/run-tests:
+          select-by-folder: \tests
+          use-parallel: true
+                   
 workflows:
-  shared_network_with_xml:
+  self_parpool_2:
     jobs:
       - build
-
-  
- 
