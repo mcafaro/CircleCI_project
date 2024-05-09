@@ -13,4 +13,4 @@ jobs:
 workflows:
   self_parpool_4:
     jobs:
-      - build
+      - build 
