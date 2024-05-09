@@ -6,12 +6,7 @@ jobs:
     machine: true 
     resource_class: vandit/lease
     parallelism: 3  
-    steps:
-      - run: 
-          name: Print the Name of the Machine
-          command: |
-            echo "The name of the machine is:"
-            hostname      
+    steps:  
       - run:  
           name: Run MATLAB test with test splitting 
           command: | 
