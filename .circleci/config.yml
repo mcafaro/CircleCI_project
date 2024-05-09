@@ -11,6 +11,6 @@ jobs:
           use-parallel: true
                    
 workflows:
-  self_parpool_3:
+  self_parpool_4:
     jobs:
       - build
