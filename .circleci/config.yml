@@ -15,7 +15,7 @@ jobs:
               SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split)
               echo "$SPLIT_TESTFILES"
               FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//') 
-              echo "{$FORMATTED_TESTFILES}"
+              echo "{$FORMATTED_TESTFILES}" 
               cd ..
               matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
               
