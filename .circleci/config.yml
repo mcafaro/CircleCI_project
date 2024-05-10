@@ -5,7 +5,7 @@ jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 3  
+    parallelism: 2  
     steps:
       - run: 
           name: Print the Name of the Machine
