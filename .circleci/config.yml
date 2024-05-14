@@ -23,10 +23,7 @@ jobs:
               echo "{$FORMATTED_TESTFILES}"
               cd ..
               matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})" 
-              
- 
-      - store_test_results: 
-         path: tests/results.xml
+
       
     
 
