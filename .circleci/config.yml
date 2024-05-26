@@ -32,7 +32,7 @@ jobs:
 
            
 workflows:
-  self_parallelism_2:
+  self_parallelism_1:
     jobs:
       - build
 
