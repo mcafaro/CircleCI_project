@@ -5,7 +5,7 @@ jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 1 
+    parallelism: 2 
     steps:
       - run:
           name: Print the Name of the Machine
@@ -32,7 +32,7 @@ jobs:
 
            
 workflows:
-  self_parallelism_1:
+  self_parallelism_2:
     jobs:
       - build
 
