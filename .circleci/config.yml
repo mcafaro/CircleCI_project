@@ -15,8 +15,12 @@ jobs:
             which matlab || echo "MATLAB not found in PATH"
             echo "Finding CircleCI installation path..."
             which circleci
+      - run:
+          name: Execute CircleCI Version Command in MATLAB
+          command: |
+            matlab -batch "system('circleci version');"
                    
 workflows:
-  cloudrunner_both_install_path:
+  Execute CircleCI Version Command in MATLAB:
     jobs:
       - build
