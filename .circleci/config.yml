@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Execute CircleCI Version Command in MATLAB
           command: |
-            matlab -batch "system('circleci version');"
+            matlab-batch "system('circleci version');"
                    
 workflows:
   Execute CircleCI Version Command in MATLAB:
