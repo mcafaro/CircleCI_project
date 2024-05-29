@@ -6,6 +6,7 @@ jobs:
     machine:
       image: ubuntu-2004:current
     steps:
+      - checkout
       - matlab/install:
           products: Parallel_Computing_Toolbox
       - run:
@@ -16,11 +17,12 @@ jobs:
             echo "Finding CircleCI installation path..."
             which circleci
       - run:
-          name: Execute CircleCI Version Command in MATLAB
+          name: Execute CircleCI Tests Command in MATLAB
           command: |
-            matlab-batch "system('circleci version');"
+            cd tests/
+            matlab-batch "system('TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')');"
                    
 workflows:
-  Execute CircleCI Version Command in MATLAB:
+  Execute CircleCI Tests Command in MATLAB:
     jobs:
       - build
