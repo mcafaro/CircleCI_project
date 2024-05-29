@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Show MATLAB Installation Path
           command: |
-                  where MATLAB
+                  which MATLAB
                    
 workflows:
   cloudrunner_install_path:
