@@ -20,7 +20,7 @@ jobs:
       - run:
           name: List Test Files and Execute CircleCI Tests Command
           command: |
-            matlab -batch "cd tests; system('ls && TESTFILES=$(circleci tests glob \"**/*.m\"); echo $TESTFILES');"
+            matlab-batch "cd tests; system('ls && TESTFILES=$(circleci tests glob \"**/*.m\"); echo $TESTFILES');"
                    
 workflows:
   Execute CircleCI Tests Glob Command in MATLAB:
