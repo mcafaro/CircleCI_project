@@ -20,7 +20,7 @@ jobs:
           name: Execute CircleCI Tests Command in MATLAB
           command: |
             cd tests/
-            matlab -batch "system('TESTFILES=$(circleci tests glob \"**/*.m\" | xargs -n1 basename | sed ''s/\\.m$//''); echo $TESTFILES');"
+            matlab-batch "system('TESTFILES=$(circleci tests glob \"**/*.m\" | xargs -n1 basename | sed ''s/\\.m$//''); echo $TESTFILES');"
                    
 workflows:
   Execute CircleCI Tests Command in MATLAB:
