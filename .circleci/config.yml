@@ -16,10 +16,11 @@ jobs:
             which matlab || echo "MATLAB not found in PATH"
             echo "Finding CircleCI installation path..."
             which circleci
+            
       - run:
-          name: Execute CircleCI Tests Command in MATLAB
+          name: List Test Files and Execute CircleCI Tests Command
           command: |
-            matlab-batch "cd tests; system('TESTFILES=$(circleci tests glob \"**/*.m\"); echo $TESTFILES');"
+            matlab -batch "cd tests; system('ls && TESTFILES=$(circleci tests glob \"**/*.m\"); echo $TESTFILES');"
                    
 workflows:
   Execute CircleCI Tests Glob Command in MATLAB:
