@@ -9,9 +9,10 @@ jobs:
       - matlab/install:
           products: Parallel_Computing_Toolbox
       - run:
-          name: Show MATLAB Installation Path
+          name: Find MATLAB Installation Path
           command: |
-                  which MATLAB
+            echo "Finding MATLAB installation path..."
+            which MATLAB || echo "MATLAB not found in PATH"
                    
 workflows:
   cloudrunner_install_path:
