@@ -12,7 +12,7 @@ jobs:
           name: Find MATLAB Installation Path
           command: |
             echo "Finding MATLAB installation path..."
-            which MATLAB || echo "MATLAB not found in PATH"
+            which matlab || echo "MATLAB not found in PATH"
                    
 workflows:
   cloudrunner_install_path:
