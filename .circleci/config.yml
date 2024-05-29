@@ -13,8 +13,10 @@ jobs:
           command: |
             echo "Finding MATLAB installation path..."
             which matlab || echo "MATLAB not found in PATH"
+            echo "Finding CircleCI installation path..."
+            which circleci
                    
 workflows:
-  cloudrunner_install_path:
+  cloudrunner_both_install_path:
     jobs:
       - build
