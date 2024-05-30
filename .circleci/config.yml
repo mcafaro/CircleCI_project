@@ -3,8 +3,8 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:current
+    machine: true 
+    resource_class: vandit/lease
     steps:
       - checkout
       - matlab/install:
@@ -23,6 +23,6 @@ jobs:
 
                    
 workflows:
-  Execute CircleCI Tests Glob Command in MATLAB:
+  Execute CircleCI Tests Glob Command in MATLAB self hosted:
     jobs:
       - build
