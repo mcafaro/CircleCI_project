@@ -6,9 +6,6 @@ jobs:
     machine: true 
     resource_class: vandit/lease
     steps:
-      - checkout
-      - matlab/install:
-          products: Parallel_Computing_Toolbox
       - run:
           name: Find MATLAB Installation Path
           command: |
