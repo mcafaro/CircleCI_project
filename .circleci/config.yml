@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Execute CircleCI Tests Glob Command in MATLAB
           command: |
-            matlab-batch "cd tests; command = 'circleci tests glob "**/*.m"'; [status, cmdout] = system(command); if status == 0; disp('Command executed successfully:'); disp(cmdout); else; disp('Command execution failed.'); end"            
+            matlab -batch "cd tests; command = 'circleci tests glob "**/*.m"'; [status, cmdout] = system(command); if status == 0; disp('Command executed successfully:'); disp(cmdout); else; disp('Command execution failed.'); end"            
 
                    
 workflows:
