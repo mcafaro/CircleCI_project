@@ -5,7 +5,6 @@ jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 2
     steps:
       - run:
           name: Find MATLAB Installation Path
@@ -21,6 +20,6 @@ jobs:
 
                    
 workflows:
-  Execute CircleCI Tests Split Command with Parallelism=2: 
+  Testing: 
     jobs:
       - build    
