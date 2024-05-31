@@ -5,6 +5,7 @@ jobs:
   build:
     machine: true 
     resource_class: vandit/lease
+    parallelism: 2
     steps: 
       - run: 
           name: Find MATLAB Installation Path 
