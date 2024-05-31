@@ -5,7 +5,7 @@ jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    steps:
+    steps: 
       - run: 
           name: Find MATLAB Installation Path
           command: | 
