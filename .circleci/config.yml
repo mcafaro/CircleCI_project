@@ -23,4 +23,4 @@ jobs:
 workflows:
   Execute CircleCI Tests Split Command with Parallelism=2: 
     jobs:
-      - build   
+      - build    
