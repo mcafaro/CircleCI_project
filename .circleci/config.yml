@@ -8,7 +8,7 @@ jobs:
     steps:
       - run: 
           name: Find MATLAB Installation Path
-          command: |
+          command: | 
             echo "Finding MATLAB installation path..."
             which matlab || echo "MATLAB not found in PATH"
             echo "Finding CircleCI installation path..." 
