@@ -17,7 +17,8 @@ jobs:
       - run:
           name: Execute CircleCI Tests Glob Command in MATLAB
           command: |
-             matlab -batch "sample"              
+             cd tests
+             circleci tests glob "**/*.m" | circleci tests run --command "xargs matlab -batch runtests" --split-by=timings              
 
                    
 workflows:  
