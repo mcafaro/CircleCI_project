@@ -20,7 +20,7 @@ jobs:
              matlab -batch "sample"              
 
                    
-workflows: 
+workflows:  
   circleci test run: 
     jobs:
       - build    
