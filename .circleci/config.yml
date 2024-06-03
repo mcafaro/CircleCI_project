@@ -12,7 +12,7 @@ jobs:
           command: | 
             echo "Finding MATLAB installation path..."
             which matlab || echo "MATLAB not found in PATH"
-            echo "Finding CircleCI installation path..." 
+            echo "Finding CircleCI installation path..."  
             which circleci
       - run:
           name: Execute CircleCI Tests Glob Command in MATLAB
