@@ -8,7 +8,7 @@ jobs:
     parallelism: 1
     steps: 
       - run:
-          name: Trying POC
+          name: Trying POC 
           command: |
              matlab -batch "poc"             
 
