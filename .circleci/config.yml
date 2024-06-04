@@ -5,23 +5,15 @@ jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 2
+    parallelism: 1
     steps: 
-      - run: 
-          name: Find MATLAB Installation Path 
-          command: | 
-            echo "Finding MATLAB installation path..."
-            which matlab || echo "MATLAB not found in PATH"
-            echo "Finding CircleCI installation path..."  
-            which circleci
       - run:
-          name: Execute CircleCI Tests Glob Command in MATLAB
+          name: Trying POC
           command: |
-             cd tests
-             circleci tests glob "**/*.m" | circleci tests run --command "xargs matlab -batch runtests" --split-by=timings              
+             matlab -batch "poc"             
 
                    
-workflows:  
-  circleci test run: 
+workflows:   
+  POC_TRY: 
     jobs:
       - build    
