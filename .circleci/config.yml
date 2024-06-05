@@ -1,20 +1,21 @@
-version: '2.1'            
+version: 2.1        
 orbs:
   matlab: mathworks/matlab@1 
 jobs:
   build:
-    machine: true 
-    resource_class: vandit/lease
-    parallelism: 1 
-    steps: 
+    machine:
+      image: ubuntu-2004:current
+    steps:   
+      - checkout
       - run:
-          name: Trying POC 
-          command: |
-             matlab -batch "poc"             
-
+          command: cd tests
+      - matlab/run-tests
+      - store_test_results:
+          path: tests/results.xml
                      
 workflows:   
-  POC_TRY: 
+  run-tests: 
     jobs:
       - build    
        
+
