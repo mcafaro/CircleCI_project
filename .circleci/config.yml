@@ -8,7 +8,8 @@ jobs:
     steps:   
       - checkout
       - run:
-          command: cd tests
+          command: cd tests 
+      - matlab/install
       - matlab/run-tests
       - store_test_results:
           path: tests/results.xml
