@@ -10,9 +10,9 @@ jobs:
       - run:
           command: cd tests 
       - matlab/install
-      - matlab/run-tests
-      - store_test_results:
-          path: tests/results.xml
+      - matlab/run-tests:
+          test-results-junit: results.xml
+
                      
 workflows:   
   run-tests: 
