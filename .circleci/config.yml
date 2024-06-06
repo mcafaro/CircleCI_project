@@ -1,22 +1,40 @@
-version: 2.1        
+version: '2.1'   
 orbs:
-  matlab: mathworks/matlab@1 
+  matlab: mathworks/matlab@1
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:current
-    steps:   
-      - checkout
-      - run:
-          command: cd tests 
-      - matlab/install
-      - matlab/run-tests:
-          test-results-junit: results.xml
+    machine: true 
+    resource_class: vandit/lease
+    parallelism: 3  
+    steps:
+      - run: 
+          name: Print the Name of the Machine
+          command: |
+            echo "The name of the machine is:"
+            hostname      
+      - run:  
+          name: Run MATLAB test with test splitting 
+          command: | 
+              cd tests/
+              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
+              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split)
+              echo "$SPLIT_TESTFILES"
+              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//') 
+              echo "{$FORMATTED_TESTFILES}"
+              cd ..
+              matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
+              
+ 
+      - store_test_results: 
+         path: tests/results.xml
+      
+    
 
-                     
-workflows:   
-  run-tests: 
+           
+workflows:
+  self_parallelism_3:
     jobs:
-      - build    
-       
+      - build
 
+  
+ 
