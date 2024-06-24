@@ -1,40 +1,20 @@
-version: '2.1'       
+version: '2.1'            
 orbs:
-  matlab: mathworks/matlab@1
+  matlab: mathworks/matlab@1 
 jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 3
-    steps:
-      - run: 
-          name: Print the Name of the Machine
+    parallelism: 1 
+    steps: 
+      - run:
+          name: Trying POC 2
           command: |
-            echo "The name of the machine is:"
-            hostname      
-      - run:  
-          name: Run MATLAB test with test splitting 
-          command: | 
-              cd tests/
-              TESTFILES=$(circleci tests glob "**/*.m" | xargs -n1 basename | sed 's/\.m$//')
-              SPLIT_TESTFILES=$(echo "$TESTFILES" | circleci tests split --split-by=timings)
-              echo "$SPLIT_TESTFILES"
-              FORMATTED_TESTFILES=$(echo "$SPLIT_TESTFILES" | awk '{printf "\x27%s\x27,", $0}' | sed 's/,$//') 
-              echo "{$FORMATTED_TESTFILES}"
-              cd ..
-              matlab -batch "runTestsAndGenerateReports({$FORMATTED_TESTFILES})"
-              
- 
-      - store_test_results: 
-         path: tests/results.xml
-      
-    
-  
-           
-workflows:
-  self_parallelism_3:
-    jobs:
-      - build
+             matlab -batch "poc2"             
 
-  
- 
+                     
+workflows:   
+  POC_TRY_2: 
+    jobs:
+      - build    
+       
