@@ -8,9 +8,12 @@ jobs:
     parallelism: 1 
     steps: 
       - run:
-          name: Trying POC 2
+          name: Run MATLAB Test with CircleCI Test Splitting
           command: |
-             matlab -batch "poc2"             
+             cd Tests
+             TestFiles=$(circleci tests glob "**/*.m")
+             Split_TestFiles=$(echo "$TestFiles" | circleci tests split --split-by=name)
+             echo "Split_TestFiles"     
 
                      
 workflows:   
