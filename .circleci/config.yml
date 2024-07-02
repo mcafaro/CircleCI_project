@@ -10,11 +10,11 @@ jobs:
       - run:
           name: Run MATLAB Test with CircleCI Test Splitting
           command: |
-             cd Tests
-             TestFiles=$(circleci tests glob "**/*.m")
-             Split_TestFiles=$(echo "$TestFiles" | circleci tests split --split-by=name)
-             echo $(Split_TestFiles)     
-
+            cd Tests
+            TestFiles=$(circleci tests glob "**/*.m")
+            echo "$TestFiles"
+            Split_TestFiles=$(echo "$TestFiles" | circleci tests split --split-by=name)
+            echo "$Split_TestFiles"
                      
 workflows:   
   POC_TRY_2: 
