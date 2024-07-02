@@ -13,7 +13,7 @@ jobs:
              cd Tests
              TestFiles=$(circleci tests glob "**/*.m")
              Split_TestFiles=$(echo "$TestFiles" | circleci tests split --split-by=name)
-             echo "Split_TestFiles"     
+             echo $(Split_TestFiles)     
 
                      
 workflows:   
