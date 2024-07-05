@@ -12,7 +12,8 @@ jobs:
           shell: powershell.exe 
           command: |
             cd L:\E\matlab\test\toolbox\simulink\variants\var-general
-            sb -m -batch -m sim_test
+            sb -m -batch -m pwd 
+            sb -m -batch -m disp(2+3)
             
 
          
