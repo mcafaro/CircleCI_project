@@ -5,17 +5,15 @@ jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 1 
+    parallelism: 2 
     steps: 
       - run:
           name: Run MATLAB Test with CircleCI Test Splitting
           command: |
-            cd Tests
-            TestFiles=$(circleci tests glob "**/*.m")
-            echo "$TestFiles"
-            Split_TestFiles=$(echo "$TestFiles" | circleci tests split --split-by=name)
-            echo "$Split_TestFiles"
-                     
+            cd L:\C\matlab\test\toolbox\simulink\variants\var-general
+            sb
+            echo "present directory $pwd"
+                    
 workflows:   
   POC_TRY_2: 
     jobs:
