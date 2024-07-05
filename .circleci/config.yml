@@ -1,22 +1,23 @@
-version: '2.1'              
+version: 2.1              
 orbs:
   matlab: mathworks/matlab@1 
 jobs:
   build:
     machine: true 
     resource_class: vandit/lease
-    parallelism: 2 
+    parallelism: 1 
     steps: 
       - run:
           name: Run MATLAB Test with CircleCI Test Splitting
           shell: powershell.exe
           command: |
-            cd L:\C\matlab\test\toolbox\simulink\variants\var-general
-            sb
-            echo "present directory $pwd"
-                    
+            cd L:\E\matlab\test\toolbox\simulink\variants\var-general
+            sb -m -batch -m sim_test
+            
+
+         
 workflows:   
-  POC_TRY_2: 
+  Simulink_Test: 
     jobs:
       - build    
        
