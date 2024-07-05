@@ -9,7 +9,7 @@ jobs:
     steps: 
       - run:
           name: Run MATLAB Test with CircleCI Test Splitting
-          shell: powershell.exe
+          shell: powershell.exe 
           command: |
             cd L:\E\matlab\test\toolbox\simulink\variants\var-general
             sb -m -batch -m sim_test
