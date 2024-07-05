@@ -1,4 +1,4 @@
-version: 2.1               
+version: 2.1                
 orbs:
   matlab: mathworks/matlab@1 
 jobs:
@@ -13,7 +13,6 @@ jobs:
           command: |
             cd L:\E\matlab\test\toolbox\simulink\variants\var-general
             sb -m -batch -m pwd 
-            sb -m -batch -m disp(2+3)
             
 
          
