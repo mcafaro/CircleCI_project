@@ -7,7 +7,7 @@ jobs:
     resource_class: vandit/lease
     parallelism: 1  
     steps: 
-      - matlab/run-tests:
+      - matlab/run-tests: 
           select-by-folder: tests
           test-results-junit: test/results.xml
           test-results-pdf: test/results.pdf
