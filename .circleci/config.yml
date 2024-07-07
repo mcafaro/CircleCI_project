@@ -8,7 +8,7 @@ jobs:
     parallelism: 1  
     steps: 
       - matlab/install:
-          release: R2023b
+          release: R2023a
 
       - matlab/run-tests: 
           select-by-folder: tests
