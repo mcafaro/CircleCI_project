@@ -3,12 +3,10 @@ orbs:
   matlab: mathworks/matlab@1 
 jobs:
   build:
-    machine: true 
-    resource_class: vandit/lease
+    machine: 
+      image: ubuntu-2004:current
     parallelism: 1  
     steps: 
-      - checkout
-      - matlab/install
       - matlab/run-tests:
           select-by-folder: \tests
           test-results-pdf: \tests
