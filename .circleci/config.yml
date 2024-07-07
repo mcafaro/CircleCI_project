@@ -7,16 +7,26 @@ jobs:
     resource_class: vandit/lease
     parallelism: 1  
     steps: 
-      - matlab/install
+      - matlab/install:
+          release: R2023b
+
       - matlab/run-tests: 
           select-by-folder: tests
-          test-results-junit: test/results.xml
-          test-results-pdf: test/results.pdf
-      - run:
-          name: Run MATLAB Test with PDF generation
-          command: |
-            echo "Printing pdf report, junit results and html test results"  
-            
+          test-results-junit: tests/results.xml
+          test-results-pdf: tests/results.pdf
+
+      - store_artifacts:
+          path: tests/results.xml
+          destination: results.xml
+
+      - store_artifacts:
+          path: tests/results.pdf
+          destination: results.pdf
+
+workflows:   
+  pdf_generation: 
+    jobs:
+      - build             
             
 
  
