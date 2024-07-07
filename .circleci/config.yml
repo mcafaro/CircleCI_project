@@ -12,7 +12,8 @@ jobs:
       - matlab/install
       - matlab/run-tests:
           select-by-folder: tests
-          test-results-pdf: tests
+          test-results-junit: test/results.xml
+          test-results-pdf: tests/results.pdf
       - run:
           name: Run MATLAB Test with PDF generation
           command: |
