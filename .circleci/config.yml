@@ -3,9 +3,8 @@ orbs:
   matlab: mathworks/matlab@1 
 jobs:
   build:
-    machine: 
-      image: ubuntu-2004:current
-
+    machine: true 
+    resource_class: vandit/lease
     parallelism: 1  
     steps: 
       - checkout
