@@ -7,17 +7,23 @@ jobs:
     resource_class: vandit/lease
     parallelism: 1  
     steps: 
+      - matlab/run-tests:
+          select-by-folder: \tests
+          test-results-pdf: \tests
+          test-results-junit: \tests
+          test-results-html: \tests
+
       - run:
-          name: Run MATLAB Test with CircleCI Test Splitting
+          name: Run MATLAB Test with PDF generation
           shell: powershell.exe 
           command: |
-            cd L:\E\matlab\test\toolbox\simulink\variants\var-general
-            sb -m -batch -m sim_test
+            echo "Printing pdf report, junit results and html test results"  
+            
             
 
          
 workflows:   
-  Simulink_Test: 
+  pdf_generation: 
     jobs:
       - build    
        
