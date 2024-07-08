@@ -14,7 +14,7 @@ jobs:
       - store_test_results:
           path: results.xml
 
-      - store_artifacts:
+      - store_artifacts: 
           path: results.xml
           destination: results.xml
 
