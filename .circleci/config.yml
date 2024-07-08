@@ -11,7 +11,7 @@ jobs:
           command: |
               matlab -batch "my_genscript"
  
-      - store_test_results:
+      - store_test_results: 
           path: results.xml
 
       - store_artifacts: 
