@@ -9,7 +9,7 @@ jobs:
     steps: 
       - run:
           command: |
-              matlab -batch "my_genscript"
+              matlab -batch "x=my_genscript; eval(x)"
 
       - store_test_results:
           path: results.xml
