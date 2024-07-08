@@ -3,7 +3,7 @@ orbs:
   matlab: mathworks/matlab@1  
 jobs:  
   build:
-    machine: true 
+    machine: true  
     resource_class: vandit/lease
     parallelism: 2  
     steps: 
