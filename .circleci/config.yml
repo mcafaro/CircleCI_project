@@ -23,7 +23,7 @@ jobs:
           destination: results.pdf
 
 workflows:   
-  sim_test_pdg_generation: 
+  select_if: 
     jobs:
       - build             
              
