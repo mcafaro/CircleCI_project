@@ -2,7 +2,7 @@ version: 2.1
 orbs:  
   matlab: mathworks/matlab@1    
 jobs:   
-  build:
+  build: 
     machine: true  
     resource_class: vandit/lease 
     parallelism: 1  
