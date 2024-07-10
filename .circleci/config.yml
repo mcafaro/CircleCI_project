@@ -23,7 +23,7 @@ jobs:
           destination: results.pdf  
 
 workflows:   
-  select_if:  
+  second_run:  
     jobs:
       - build             
              
