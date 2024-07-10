@@ -5,7 +5,7 @@ jobs:
   build: 
     machine: true  
     resource_class: vandit/lease 
-    parallelism: 2 
+    parallelism: 2  
     steps: 
       - run:
           command: |
