@@ -1,19 +1,39 @@
-version: 2.1                      
-orbs:  
-  matlab: mathworks/matlab@1     
-jobs:   
-  build: 
-    machine: true  
-    resource_class: vandit/lease 
+version: 2.1
+
+jobs:
+  test:
+    machine:
+      image: ubuntu-2004:202101-01  # Use the appropriate machine image for your project
+
     steps:
-     - matlab/run-tests:
-          select-by-folder: tests 
+      - checkout
 
+      - run:
+          name: Install Python
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y python3 python3-venv python3-pip
 
-workflows:   
-  run_tests:  
-    jobs:  
-      - build             
-             
-   
- 
+      - run:
+          name: Install Dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install unittest-xml-reporting
+
+      - run:
+          name: Run Tests
+          command: |
+            . venv/bin/activate
+            python test_example.py
+
+      - store_artifacts:
+          path: results.xml
+          destination: test-results
+
+workflows:
+  version: 2
+  python_test:
+    jobs:
+      - test
