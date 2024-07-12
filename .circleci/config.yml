@@ -5,25 +5,13 @@ jobs:
   build: 
     machine: true  
     resource_class: vandit/lease 
-    parallelism: 2  
-    steps: 
-      - run:
-          command: |
-              matlab -batch "my_genscript"
+    steps:
+     - matlab/run-tests:
+          select-by-folder: tests 
 
-      - store_test_results:
-          path: results.xml
-
-      - store_artifacts:
-          path: results.xml
-          destination: results.xml
-
-      - store_artifacts:
-          path: results.pdf
-          destination: results.pdf  
 
 workflows:   
-  5th_run:  
+  run_tests:  
     jobs:  
       - build             
              
