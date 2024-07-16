@@ -26,8 +26,14 @@ jobs:
           name: Split Test Files
           command: |
             TEST_FILES=$(circleci tests glob "tests/**/*.py" | circleci tests split)
-            echo $TEST_FILES
+            echo $TEST_FILES > split_test_files.txt
 
+      - run:
+          name: Run Split Tests
+          command: |
+            . venv/bin/activate
+            TEST_FILES=$(cat split_test_files.txt)
+            python run_split_tests.py $TEST_FILES
 
       - store_artifacts:
           path: test-results
