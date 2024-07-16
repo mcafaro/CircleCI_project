@@ -27,9 +27,7 @@ jobs:
           command: |
             . venv/bin/activate
             mkdir -p test-results
-            python test_example.py
-            python test_math_operations.py
-            python test_string_operations.py
+            python run_all_tests.py
 
       - store_artifacts:
           path: test-results
@@ -37,6 +35,6 @@ jobs:
 
 workflows:
   version: 2
-  python_test_3_files:
+  python_test:
     jobs:
       - test
