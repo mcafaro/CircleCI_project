@@ -23,17 +23,20 @@ jobs:
             pip install unittest-xml-reporting
 
       - run:
-          name: Run Tests
+          name: Run All Tests
           command: |
             . venv/bin/activate
+            mkdir -p test-results
             python test_example.py
+            python test_math_operations.py
+            python test_string_operations.py
 
       - store_artifacts:
-          path: results.xml
+          path: test-results
           destination: test-results
 
 workflows:
   version: 2
-  python_test:
+  python_test_3_files:
     jobs:
       - test
