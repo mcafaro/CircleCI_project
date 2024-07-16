@@ -21,13 +21,13 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install unittest-xml-reporting
-
+          
       - run:
-          name: Run All Tests
+          name: Split Test Files
           command: |
-            . venv/bin/activate
-            mkdir -p test-results
-            python run_all_tests.py
+            TEST_FILES=$(circleci tests glob "tests/**/*.py" | circleci tests split)
+            echo $TEST_FILES
+
 
       - store_artifacts:
           path: test-results
