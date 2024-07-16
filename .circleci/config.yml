@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Split Test Files
           command: |
-            TEST_FILES=$(circleci tests glob "tests_python/**/*.py" | circleci tests split)
+            TEST_FILES=$(circleci tests glob "tests_python/**/*.py" | circleci tests split split-by=timings)
             echo $TEST_FILES
             echo $TEST_FILES > split_test_files.txt
 
@@ -42,6 +42,6 @@ jobs:
 
 workflows:
   version: 2
-  python_test:
+  splitting_python_test:
     jobs:
       - test
