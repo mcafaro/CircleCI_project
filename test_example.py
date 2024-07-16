@@ -16,5 +16,5 @@ class TestExample(unittest.TestCase):
         self.assertEqual(8 / 4, 2)
 
 if __name__ == "__main__":
-    with open('results.xml', 'wb') as output:
+    with open('test-results/results.xml', 'wb') as output:
         unittest.main(testRunner=xmlrunner.XMLTestRunner(output=output), failfast=False, buffer=False, catchbreak=False)
