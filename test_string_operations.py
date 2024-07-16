@@ -16,5 +16,5 @@ class TestStringOperations(unittest.TestCase):
         self.assertEqual("Hello World".split(), ["Hello", "World"])
 
 if __name__ == "__main__":
-    with open('results_string_operations.xml', 'wb') as output:
+    with open('test-results/results_string_operations.xml', 'wb') as output:
         unittest.main(testRunner=xmlrunner.XMLTestRunner(output=output), failfast=False, buffer=False, catchbreak=False)
