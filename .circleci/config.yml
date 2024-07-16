@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     machine:
-      image: ubuntu-2004:202101-01  # Use the appropriate machine image for your project
+      image: ubuntu-2004:current  # Use the appropriate machine image for your project
 
     steps:
       - checkout
