@@ -35,6 +35,9 @@ jobs:
             . venv/bin/activate
             TEST_FILES=$(cat split_test_files.txt)
             python run_split_tests.py $TEST_FILES
+            
+      - store_test_results:
+          path: test-results      
 
       - store_artifacts:
           path: test-results
@@ -42,6 +45,6 @@ jobs:
 
 workflows:
   version: 2
-  splitting_python_test:
+  splitting_python_test_full_path:
     jobs:
       - test
