@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Split Test Files
           command: |
-              PARAM_SELECT_BY_FILES="\$(circleci tests glob \"tests_python/**/*.py\" | circleci tests split)"
+              PARAM_SELECT_BY_FILES="\$(circleci tests glob \"tests/**/*.m\" | circleci tests split)"
               echo "Stored command in PARAM_SELECT_BY_FILES: $PARAM_SELECT_BY_FILES"
               TESTFILES=$(eval echo "$PARAM_SELECT_BY_FILES")
               echo "Evaluated output in TESTFILES: $TESTFILES"
