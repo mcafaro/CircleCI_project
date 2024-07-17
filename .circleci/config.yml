@@ -12,7 +12,7 @@ jobs:
           name: Split Test Files
           command: |
             TEST_FILES=$(circleci tests glob "tests_python/**/*.py" | circleci tests split)
-            echo TEST_FILES
+            echo $TEST_FILES
 
 
 workflows:
