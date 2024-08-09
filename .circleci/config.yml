@@ -4,21 +4,28 @@ orbs:
 jobs:
   test:
     machine:
-      image: ubuntu-2004:current  # Use the appropriate machine image for your project
+      image: ubuntu-2004:current 
     parallelism: 2
     steps:
       - checkout
-      - run:
-          name: Split Test Files
-          command: |
-              PARAM_SELECT_BY_FILES="\$(circleci tests glob \"tests/**/*.m\" | circleci tests split)"
-              echo "Stored command in PARAM_SELECT_BY_FILES: $PARAM_SELECT_BY_FILES"
-              TESTFILES=$(eval echo "$PARAM_SELECT_BY_FILES")
-              echo "Evaluated output in TESTFILES: $TESTFILES"
 
+      - matlab/install:
+          products: Simulink Simulink_Test Simulink_Coverage Parallel_Computing_Toolbox
+          no-output-timeout: 30m
+          
+      - matlab/run-tests:
+          select-by-folder: 'tests'
+          test-results-junit: 'results.xml' 
+      
+      - store_test_results:
+           path: results.xml
+
+      - store_artifacts:
+          path: results.xml
+          destination: test-results/results.xml     
 
 workflows:
   version: 2
-  splitting_by_filename:
+  Genscript:
     jobs:
       - test
