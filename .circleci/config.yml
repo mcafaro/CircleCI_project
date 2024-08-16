@@ -7,23 +7,13 @@ jobs:
       image: ubuntu-2004:current 
     parallelism: 2
     steps:
-      - checkout
+      - checkout  
 
-      - matlab/install:
-          products: Simulink Simulink_Test Simulink_Coverage Parallel_Computing_Toolbox
-          no-output-timeout: 30m
-          
-      - matlab/run-tests:
-          select-by-folder: 'tests'
-          test-results-junit: 'results.xml' 
-      
-      - store_test_results:
-           path: results.xml
-
-      - store_artifacts:
-          path: results.xml
-          destination: test-results/results.xml     
-
+      - run:
+          name: Run Tests
+          command: |
+           TestFiles= $(circleci tests glob 'tests/**/*.m')
+           echo $TestFiles
 workflows:
   version: 2
   Genscript:
