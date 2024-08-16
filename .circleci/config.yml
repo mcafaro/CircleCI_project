@@ -10,10 +10,11 @@ jobs:
       - checkout  
 
       - run:
-          name: Run Tests
+          name: Debug Test Files
           command: |
-           TestFiles= $(circleci tests glob 'tests/**/*.m')
-           echo $TestFiles
+            TestFiles=$(circleci tests glob 'tests/**/*.m')
+            echo "Test files found:"
+            echo "$TestFiles"
 workflows:
   version: 2
   Genscript:
