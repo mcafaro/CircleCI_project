@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Debug Test Files
           command: |
-            TestFiles=$(circleci tests glob 'tests/**/*.m')
+            TestFiles=$(circleci tests glob 'tests/**/*.m')| circleci tests split 
             echo "Test files found:"
             echo "$TestFiles"
 workflows:
